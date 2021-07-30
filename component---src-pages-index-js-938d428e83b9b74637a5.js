@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkportfolio_v2=self.webpackChunkportfolio_v2||[]).push([[678],{7704:function(e,t,l){l.r(t);var a=l(7294);t.default=function(){return a.createElement("main",null,a.createElement("title",null,"Home Page"),a.createElement("h1",null,"Congratulations",a.createElement("br",null),a.createElement("span",null,"— you just made a Gatsby site! "),a.createElement("span",{role:"img","aria-label":"Party popper emojis"},"🎉🎉🎉")))}}}]);
+//# sourceMappingURL=component---src-pages-index-js-938d428e83b9b74637a5.js.map
