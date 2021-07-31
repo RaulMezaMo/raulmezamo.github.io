@@ -1,7 +1,6 @@
 module.exports = {
   siteMetadata: {
-    siteUrl: "https://www.yourdomain.tld",
-    title: "Portfolio v2",
+    title: "Raul Meza Montoya | Portfolio",
   },
   plugins: [
     "gatsby-plugin-sass",
@@ -25,6 +24,14 @@ module.exports = {
         path: "./src/pages/",
       },
       __key: "pages",
+    },
+    {
+      resolve: "gatsby-source-filesystem",
+      options: {
+        name: "projects",
+        path: `${__dirname}/projects`,
+      },
+      __key: "projects",
     },
   ],
 };

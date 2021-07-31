@@ -1,0 +1,53 @@
+# Notes
+
+## Unused code
+
+### Query for project-images-thumbnails
+query MyQuery {
+  allFile(filter: {relativeDirectory: {eq: "project-images"}}) {
+    nodes {
+      name
+      relativeDirectory
+    }
+  }
+}
+
+### Query for images in corazon de maple
+query MyQuery {
+  allFile(filter: {relativeDirectory: {eq: "project-images/corazon-de-maple"}}) {
+    nodes {
+      name
+      relativeDirectory
+    }
+  }
+}
+
+
+### Query mdx files for "Projects"
+In return element:
+
+ <div className="projectsGallery">
+          <ul>
+            {data.allFile.nodes.map(node => {
+              return <li key={node.id}>{node.name}</li>
+            })}
+          </ul>
+        </div>
+
+In query:
+
+export const query = graphql`
+  query {
+    allFile(filter: {sourceInstanceName: {eq: "projects"}, extension: {eq: "mdx"}}) {
+      nodes {
+        name
+        id
+      }
+    }
+    site {
+        siteMetadata {
+          title
+        }
+      }
+  }
+`;
