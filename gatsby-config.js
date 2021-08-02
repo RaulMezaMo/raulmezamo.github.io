@@ -5,25 +5,39 @@ module.exports = {
   plugins: [
     "gatsby-plugin-sass",
     "gatsby-plugin-image",
-    "gatsby-plugin-mdx",
     "gatsby-plugin-sharp",
     "gatsby-transformer-sharp",
     "gatsby-plugin-react-helmet",
     {
-      resolve: "gatsby-source-filesystem",
+      resolve: `gatsby-transformer-remark`,
       options: {
-        name: "images",
-        path: "./src/images/",
+        plugins: [`gatsby-remark-copy-linked-files`],
       },
-      __key: "images",
+    },
+    {
+      resolve: `gatsby-plugin-mdx`,
+      options: {
+        gatsbyRemarkPlugins: [
+          {
+            resolve: `gatsby-remark-images`,
+            options: {
+              maxWidth: 1035,
+              showCaptions: true,
+              linkImagesToOriginal: true,
+              withWebp: true,
+              quality: 90,
+            }
+          }
+        ]
+      }
     },
     {
       resolve: "gatsby-source-filesystem",
       options: {
-        name: "pages",
-        path: "./src/pages/",
+        name: "images",
+        path: `${__dirname}/src/images`,
       },
-      __key: "pages",
+      __key: "images",
     },
     {
       resolve: "gatsby-source-filesystem",
