@@ -7,7 +7,6 @@ import Section from "../components/Section";
 import FrontEnd from "../images/svgs/front-end_sm.svg";
 import UXUIDesign from "../images/svgs/ux-ui-design_sm.svg";
 import GraphicDesign from "../images/svgs/graphic-design_sm.svg";
-import GradientColors from "../images/svgs/blob-gradient-colors.svg";
 
 // markup
 const IndexPage = ({ data }) => {
