@@ -4,6 +4,10 @@ import { graphql, Link } from "gatsby";
 import { GatsbyImage } from "gatsby-plugin-image";
 import Layout from "../components/Layout";
 import Section from "../components/Section";
+import FrontEnd from "../images/svgs/front-end_sm.svg";
+import UXUIDesign from "../images/svgs/ux-ui-design_sm.svg";
+import GraphicDesign from "../images/svgs/graphic-design_sm.svg";
+import GradientColors from "../images/svgs/blob-gradient-colors.svg";
 
 // markup
 const IndexPage = ({ data }) => {
@@ -14,7 +18,7 @@ const IndexPage = ({ data }) => {
         {/* Section: Header introducción / proyectos */}
         <div className="headerBlob">
           <h1>¡Hola! Soy Raul Meza Montoya, diseñador gráfico y web.</h1>
-          <div className="blob"></div>
+          <div id="indexBlob" className="blob"></div>
         </div>
         <div className="projectsGallery d-flex">
           {data.allFile.nodes.map((node) => {
@@ -30,8 +34,8 @@ const IndexPage = ({ data }) => {
           })}
         </div>
         {/*------------------------------------------------------*/}
-        {/* Section: Acerca de */}
-        <Section sectionTitle="Acerca de">
+        {/* Section: About me */}
+        <Section sectionTitle="Acerca de" id="acerca-de">
           <div className="introduction">
             <p>
               ¡Mucho gusto! Me llamo Raúl Meza Montoya soy diseñador gráfico de
@@ -63,15 +67,20 @@ const IndexPage = ({ data }) => {
           <h3 className="subtitleHeading">Especialidades</h3>
           <ul>
             <li>
-              <img className="specialtyIcon" src="#" />
+              <UXUIDesign className="svg inline-svg svg-icon" />
+              {/* <img
+                className="specialtyIcon"
+                src="#"
+                alt="Ilustración de wireframe."
+              /> */}
               Diseño UX/UI
             </li>
             <li>
-              <img className="specialtyIcon" src="#" />
+              <FrontEnd className="svg inline-svg svg-icon" />
               Desarrollo Front End
             </li>
             <li>
-              <img className="specialtyIcon" src="#" />
+              <GraphicDesign className="svg inline-svg svg-icon" />
               Diseño Gráfico
             </li>
           </ul>
@@ -96,8 +105,8 @@ const IndexPage = ({ data }) => {
           </ul>
         </Section>
         {/*------------------------------------------------------*/}
-        {/* Section: Contacto */}
-        <Section sectionTitle="Contacto">
+        {/* Section: Contact */}
+        <Section sectionTitle="Contacto" id="contacto">
           <p>¡Estaré contento de hablar contigo!</p>
           <a href="mailto:raulmezamontoya@gmail.com">
             Email: raulmezamontoya@gmail.com

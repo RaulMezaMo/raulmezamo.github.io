@@ -3,7 +3,15 @@ module.exports = {
     title: "Raul Meza Montoya | Portfolio",
   },
   plugins: [
-    "gatsby-plugin-sass",
+    {
+      resolve: `gatsby-plugin-sass`,
+      options: {
+        sassOptions: {
+          implementation: require("sass"),
+          // includePaths: [`${__dirname}/src/styles`, `${__dirname}/node_modules/bootstrap/scss`, `${__dirname}`],
+        }
+      },
+    },
     "gatsby-plugin-image",
     "gatsby-plugin-sharp",
     "gatsby-transformer-sharp",
@@ -46,6 +54,14 @@ module.exports = {
         path: `${__dirname}/projects`,
       },
       __key: "projects",
+    },
+    {
+      resolve: "gatsby-plugin-react-svg",
+      options: {
+        rule: {
+          include: `${__dirname}/src/images/svgs`
+        }
+      }
     },
   ],
 };

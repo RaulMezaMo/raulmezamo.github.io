@@ -3,6 +3,7 @@ import Navbar from './Navbar'
 import Footer from './Footer'
 import { graphql, useStaticQuery } from "gatsby";
 import { Helmet } from "react-helmet";
+import '../styles/global.scss'
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
@@ -26,12 +27,13 @@ const Layout = ({ children }) => {
     <main>
       <Helmet>
         <title>{data.site.siteMetadata.title}</title>
-        <link
+        {/* Bootstrap CDN with helmet react */}
+        {/* <link
           href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
           rel="stylesheet"
           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
           crossorigin="anonymous"
-        />
+        /> */}
         <script src="https://kit.fontawesome.com/6a87f388b7.js" crossorigin="anonymous"></script>
       </Helmet>
       <Navbar />
