@@ -1,11 +1,21 @@
-// Custom.scss
-// Option B: Include parts of Bootstrap
+@charset 'utf-8';
+
+/**
+* Main.scss
+*
+* For bootstrap imports and every custom code delimited so:
+* - Abstracts
+* - Base
+* - Components
+* - Layout
+* - "main.scss" (This file)
+*/
 
 // 1. Include functions first (so you can manipulate colors, SVGs, calc, etc)
 @import "../../node_modules/bootstrap/scss/functions";
 
 // 2. Include any default variable overrides here
-@import "custom-variables";
+@import "abstracts/variables";
 
 // 3. Include remainder of required Bootstrap stylesheets
 @import "../../node_modules/bootstrap/scss/variables";
@@ -24,10 +34,15 @@
 @import "../../node_modules/bootstrap/scss/buttons";
 // @import "../../node_modules/bootstrap/scss/utilities/api";
 
-// 5. Add additional custom code here
+// 5. Additional custom imports here
 
-// .navbar {
-//   .navbar-nav {
-//     background-color: black;
-//   }
-// }
+@import 'base/animations';
+@import 'base/typography';
+
+@import 'layout/footer';
+@import 'layout/grid';
+@import 'layout/header';
+@import 'layout/headings';
+
+@import 'components/buttons';
+@import 'components/hero';

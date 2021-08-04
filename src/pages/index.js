@@ -7,6 +7,8 @@ import Section from "../components/Section";
 import FrontEnd from "../images/svgs/front-end_sm.svg";
 import UXUIDesign from "../images/svgs/ux-ui-design_sm.svg";
 import GraphicDesign from "../images/svgs/graphic-design_sm.svg";
+import EyeIntro from "../components/SvgComponents/eye_svg";
+import Blob from "../components/SvgComponents/blob_svg";
 
 // markup
 const IndexPage = ({ data }) => {
@@ -17,7 +19,11 @@ const IndexPage = ({ data }) => {
         {/* Section: Header introducción / proyectos */}
         <div className="headerBlob">
           <h1>¡Hola! Soy Raul Meza Montoya, diseñador gráfico y web.</h1>
-          <div id="indexBlob" className="blob"></div>
+          <div id="indexBlob" className="blob">
+            <EyeIntro id="eye-left_svg" />
+            <EyeIntro id="eye-right_svg" />
+            <Blob id="blob_svg" />
+          </div>
         </div>
         <div className="projectsGallery d-flex">
           {data.allFile.nodes.map((node) => {
@@ -127,7 +133,7 @@ export const query = graphql`
         name
         id
         childImageSharp {
-          gatsbyImageData
+          gatsbyImageData(layout: FULL_WIDTH)
         }
       }
     }

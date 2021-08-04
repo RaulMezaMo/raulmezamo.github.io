@@ -3,9 +3,12 @@ import Navbar from './Navbar'
 import Footer from './Footer'
 import { graphql, useStaticQuery } from "gatsby";
 import { Helmet } from "react-helmet";
-import '../styles/global.scss'
+import '../styles/main.scss'
+import '../../vendors/font-awesome/css/fontawesome.min.css'
+import '../../vendors/font-awesome/css/brands.min.css'
 
 const Layout = ({ children }) => {
+  {/* Queries the thumbnails for the project image gallery and the site metadata*/ }
   const data = useStaticQuery(graphql`
   query {
      allFile(filter: { relativeDirectory: { eq: "thumbnails" }},  sort: {fields: name}) {
@@ -26,20 +29,16 @@ const Layout = ({ children }) => {
   return (
     <main>
       <Helmet>
+        {/* Site metadata */}
         <title>{data.site.siteMetadata.title}</title>
-        {/* Bootstrap CDN with helmet react */}
-        {/* <link
-          href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
-          rel="stylesheet"
-          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
-          crossorigin="anonymous"
-        /> */}
-        <script src="https://kit.fontawesome.com/6a87f388b7.js" crossorigin="anonymous"></script>
       </Helmet>
+      {/* Navbar component */}
       <Navbar />
+      {/* Content placed through the children prop */}
       <div className="content">
         {children}
       </div>
+      {/* Footer component */}
       <Footer />
     </main>
 

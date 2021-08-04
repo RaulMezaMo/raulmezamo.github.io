@@ -1,0 +1,29 @@
+/**
+* Typography variables
+*
+*/
+
+/**
+* Font Face declarations for local fonts
+*/
+@font-face {
+  font-family: "Authentic Sans 60";
+  src: url("../fonts/authentic-sans-60.woff");
+}
+@font-face {
+  font-family: "VG5000";
+  src: url("../fonts/VG5000-Regular_web_2.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+/**
+* Font variables
+*/
+$font-family-base: "Authentic Sans 60";
+$font-size-root: 16px;
+
+$h1-font-size: 4.25rem;
+$h2-font-size: 2.625rem;
+$h3-font-size: 1.625rem;
+$h4-font-size: 1rem;

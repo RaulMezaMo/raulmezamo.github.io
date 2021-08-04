@@ -8,16 +8,6 @@ module.exports = {
       options: {
         sassOptions: {
           implementation: require("sass"),
-          // includePaths: [
-          //   './node_modules/bootstrap/scss',
-          //   '../node_modules/bootstrap/scss',
-          //   'node_modules/bootstrap/scss',
-          //   `${__dirname}/src/styles`,
-          //   `${__dirname}/node_modules/bootstrap/scss`,
-          //   `${__dirname}`,
-          //   'node_modules/@scope',
-          //   '../node_modules/@scope',
-          // ],
         }
       },
     },
@@ -38,7 +28,6 @@ module.exports = {
           {
             resolve: `gatsby-remark-images`,
             options: {
-              maxWidth: 1035,
               showCaptions: true,
               linkImagesToOriginal: true,
               withWebp: true,
