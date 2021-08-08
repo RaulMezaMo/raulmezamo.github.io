@@ -8,17 +8,30 @@
 */
 @font-face {
   font-family: "Authentic Sans 60";
-  src: url("../fonts/authentic-sans-60.woff");
+  src: url("../fonts/authentic-sans-60.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
 }
 @font-face {
   font-family: "VG5000";
-  src: url("../fonts/VG5000-Regular_web_2.woff") format("woff");
+  src: url("../fonts/VG5000-Regular_web_3.woff") format("woff");
   font-weight: normal;
   font-style: normal;
 }
 
+/*
+* Spacing
+*/
+
+$spacing: (
+  "sm": 8px,
+  "md": 24px,
+  "lg": 64px,
+  "xl": 128px,
+);
+
 /**
-* Font variables
+* Font
 */
 $font-family-base: "Authentic Sans 60";
 $font-size-root: 16px;
@@ -27,3 +40,21 @@ $h1-font-size: 4.25rem;
 $h2-font-size: 2.625rem;
 $h3-font-size: 1.625rem;
 $h4-font-size: 1rem;
+
+/**
+* Colors
+*
+*/
+$color-primary: hsl(250, 54%, 44%);
+$color-secondary: hsl(303, 87%, 70%);
+$color-mint: hsl(167, 67%, 79%);
+$color-yellow: hsl(56, 92%, 80%);
+
+/**
+* Font colors
+*/
+$font-color: (
+  "dark": hsl(0, 0, 20%),
+  "gray": hsl(0, 0, 50%),
+  "light": hsl(0, 0, 90%),
+);

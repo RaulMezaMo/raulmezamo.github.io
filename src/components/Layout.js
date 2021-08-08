@@ -8,7 +8,6 @@ import '../../vendors/font-awesome/css/fontawesome.min.css'
 import '../../vendors/font-awesome/css/brands.min.css'
 
 const Layout = ({ children }) => {
-  {/* Queries the thumbnails for the project image gallery and the site metadata*/ }
   const data = useStaticQuery(graphql`
   query {
      allFile(filter: { relativeDirectory: { eq: "thumbnails" }},  sort: {fields: name}) {
@@ -28,40 +27,18 @@ const Layout = ({ children }) => {
   }`);
   return (
     <main>
-      <Helmet>
-        {/* Site metadata */}
-        <title>{data.site.siteMetadata.title}</title>
-      </Helmet>
-      {/* Navbar component */}
       <Navbar />
-      {/* Content placed through the children prop */}
-      <div className="content">
+      <div className="content container-lg">
         {children}
       </div>
-      {/* Footer component */}
       <Footer />
+      <Helmet>
+        <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+        <title>{data.site.siteMetadata.title}</title>
+      </Helmet>
     </main>
 
   )
 };
-
-// export const query = graphql`
-//   query {
-//     allFile(filter: { relativeDirectory: { eq: "thumbnails" } }) {
-//       nodes {
-//         name
-//         id
-//         childImageSharp {
-//           gatsbyImageData
-//         }
-//       }
-//     }
-//     site {
-//       siteMetadata {
-//         title
-//       }
-//     }
-//   }
-// `;
 
 export default Layout

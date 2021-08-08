@@ -1,5 +1,22 @@
+@use "sass:map";
 /**
-*
-* Button styles
-*
+* Button
+*/
+.btn {
+  font-family: "VG5000";
+  padding: 8px;
+  border-radius: 0;
+}
+
+/**
+* Button Secondary
+*/
+.btn.btn-secondary {  
+  border: 2px solid map.get($font-color, "dark");
+  color: map.get($font-color, "dark");
+  background-color: hsl(0, 100, 100%);
+}
+
+/**
+* Button Secondary Text w/ Icon
 */

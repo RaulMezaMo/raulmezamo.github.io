@@ -7,12 +7,12 @@ const Footer = () => {
       <ul className="icons footer-icons list-inline d-flex justify-content-center">
         <li className="list-inline-item">
           <a href="https://dribbble.com">
-            <i class="fab fa-dribbble fa-2x"></i>
+            <i className="fab fa-dribbble fa-2x"></i>
           </a>
         </li>
-        <li className="list-inline-item"><a href="https://behance.com"><i class="fab fa-behance fa-2x"></i></a></li>
-        <li className="list-inline-item"><a href="https://linkedin.com"><i class="fab fa-linkedin-in fa-2x"></i></a></li>
-        <li className="list-inline-item"><a href="https://instagram.com"><i class="fab fa-instagram fa-2x"></i></a></li>
+        <li className="list-inline-item"><a href="https://behance.com"><i className="fab fa-behance fa-2x"></i></a></li>
+        <li className="list-inline-item"><a href="https://linkedin.com"><i className="fab fa-linkedin-in fa-2x"></i></a></li>
+        <li className="list-inline-item"><a href="https://instagram.com"><i className="fab fa-instagram fa-2x"></i></a></li>
       </ul>
       <p>Raul Meza Montoya<br />© 2021</p>
     </footer>

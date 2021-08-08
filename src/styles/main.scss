@@ -16,6 +16,7 @@
 
 // 2. Include any default variable overrides here
 @import "abstracts/variables";
+@import "abstracts/mixins";
 
 // 3. Include remainder of required Bootstrap stylesheets
 @import "../../node_modules/bootstrap/scss/variables";
@@ -36,13 +37,19 @@
 
 // 5. Additional custom imports here
 
-@import 'base/animations';
+@import 'base/base';
 @import 'base/typography';
+@import 'base/animations';
 
 @import 'layout/footer';
 @import 'layout/grid';
 @import 'layout/header';
-@import 'layout/headings';
 
 @import 'components/buttons';
 @import 'components/hero';
+@import 'components/sections';
+
+@import 'pages/portfolio';
+
+// Shameful fixes that should be fixed in a better way
+@import 'shame';

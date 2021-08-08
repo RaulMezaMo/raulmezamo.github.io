@@ -1,0 +1,48 @@
+@use "sass:map";
+/**
+* Sections sass style
+*/
+
+/*
+* Section Headings
+*/
+.index {
+  // Colorful underline headers indexPage
+  .sectionHeader {
+    width: calc((100% / 6) * 4);
+    border-width: 0 0 2px 0;
+    border-style: solid;
+    border-image: linear-gradient(
+        to right,
+        $color-secondary,
+        $color-yellow,
+        $color-mint
+      )
+      30;
+    @include media-breakpoint-up("sm") {
+      margin-left: calc(100% / 6);
+    }
+  }
+}
+
+/**
+* Section Content
+*/
+.index section .section-content {
+  @include media-breakpoint-up(sm) {
+    margin-left: calc(100% / 6);
+    width: calc((100% / 6) * 4);
+  }
+  @include media-breakpoint-up(md) {
+    margin-left: calc((100% / 6) * 2);
+      width: calc((100% / 6) * 3);
+  }
+  // @include media-breakpoint-down('md') {
+  //   margin-left: calc(100% / 6);
+  //   // padding: map.get($spacing, "sm");
+  // }
+  // @include media-breakpoint-up('md') {
+  //   margin-left: calc((100% / 6) * 2);
+  //   // padding: map.get($spacing, "sm");
+  // }
+}

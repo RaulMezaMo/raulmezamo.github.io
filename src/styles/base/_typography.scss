@@ -1,20 +1,32 @@
+@use "sass:map";
 /**
 * Typography styles
 *
 */
 
+html, .root {
+  font-family: "Authentic Sans 60";
+  font-size: 16px;
+  line-height: 24px;
+  color: map.get($font-color, "dark");
+}
+
 /*
 * Headings
 */
-h1,
-.h1,
-h2,
-.h2,
-h3,
-.h3,
-h4,
-.h4 {
-  font-family: "VG5000", "Authentic Sans 60", sans-serif;
+
+.index {
+  h1,
+  .h1,
+  h2,
+  .h2,
+  h3,
+  .h3,
+  h4,
+  .h4 {
+    display: inline-block;
+    font-family: "VG5000", "Authentic Sans 60", sans-serif;
+  }
 }
 
 h1,
@@ -23,15 +35,14 @@ h1,
   line-height: 4.5rem;
   margin-top: 1.5rem;
   margin-bottom: 0rem;
-
 }
 
 h2,
 .h2 {
   font-size: 2.625rem;
   line-height: 3rem;
-  // margin-top: 1.5rem;
-  // margin-bottom: 1.5rem;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
 }
 
 h3,
@@ -83,7 +94,6 @@ hr,
   border: 1px solid;
   margin: -1px 0;
 }
-a,
 b,
 i,
 strong,

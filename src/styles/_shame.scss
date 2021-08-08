@@ -1,0 +1,15 @@
+/*
+* Shameful hacks for quick fixes that I'm not proud of.
+* A to-fix list.
+*/
+
+/*
+* Header fix for the height of the VG5000 letters that cause it to overflow upwards.
+*/
+.index {
+  .h2, h2, .h2, h3, .h3 {
+    padding: 0;
+    // padding-top: .2em;
+    // padding-bottom: -.5em;
+  }
+}

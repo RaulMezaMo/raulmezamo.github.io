@@ -1,0 +1,96 @@
+@use "sass:map";
+@use "sass:math";
+/*
+* Projects
+*
+*/
+
+.projectsGallery {
+  display: inline-flex;
+  flex-flow: row wrap;
+  // & > * {
+  //   width: 100%;
+  //   height: auto;
+  //   @include media-breakpoint-up(lg) {
+  //     width: 50%;
+  //   }
+  // }
+
+  /*
+  * Header
+  */
+  .headerBlob {
+    padding-bottom: map.get($spacing, "md");
+    position: relative;
+    display: block;
+    margin: auto;
+    max-width: 640px;
+    @include media-breakpoint-up(lg) {
+      padding-right: map.get($spacing, "md");
+      padding-bottom: map.get($spacing, "md");
+      flex-basis: 50%;
+    }
+    // width: 648px;
+
+    // Text header
+    h1 {
+      display: block;
+      position: relative;
+      margin: auto;
+      z-index: 1;
+      // font-size: calc(#{$font-size-root} * 3);
+      @include media-breakpoint-down(sm) {
+      font-size: calc(#{$font-size-root} * 3);
+      line-height: 3.25rem;
+    }
+      @include media-breakpoint-up(xl) {
+        font-size: $h1-font-size;
+      }
+    }
+
+    // Blob
+    #indexBlob {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: calc(100% - #{map.get($spacing, "md")});
+      height: calc(100% - #{map.get($spacing, "md")});
+      max-height: 220px;
+      z-index: 0;
+
+      //SVG
+      #blob_svg {
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+}
+
+/*
+* Thumbnails
+*/
+.projectsGallery {
+  a:first-of-type {
+    flex: 1 100%;
+    @include media-breakpoint-up(lg) {
+      flex-basis: 50%;
+    }
+  }
+  a {
+    @include media-breakpoint-up(lg) {
+      flex-basis: 50%;
+    }
+    & > .gatsby-image-wrapper {
+      height: 100%;
+      width: 100%;
+    }
+    //     // margin-right: map.get($spacing, "md");
+    //     // margin-bottom: map.get($spacing, "md");
+    //     & > .gatsby-image-wrapper {
+    //       height: 100%;
+    //       width: 100%; //Forces thumbnail wrapper to cover all height.
+    //     }
+  }
+}

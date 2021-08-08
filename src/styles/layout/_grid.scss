@@ -1,5 +1,20 @@
 /**
 *
 * Grid styles
-*
 */
+
+// .content {
+  // Width to account for margin size 88px*2 and keep it centered with auto
+  // margin: auto;
+  // width: calc(100% - 176px);
+  // max-width: 1320px;
+// }
+
+body, html {
+  min-width: 375px;
+}
+
+main > div.content {
+  padding-left: 16px;
+  padding-right: 16px;
+}
