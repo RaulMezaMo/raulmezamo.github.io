@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { Link } from 'gatsby'
-import Cara from '../images/svgs/cara_sm.svg'
+import Cara from '../components/SvgComponents/cara_svg.js'
 
 const Navbar = () => {
   return (

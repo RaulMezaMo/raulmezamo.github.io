@@ -1,5 +1,15 @@
+@use "sass:map";
 /**
-*
-* Footer styles
-*
+* Footer
 */
+footer.footer {
+  background: $color-yellow;
+  padding: map.get($spacing, "md");
+  .icons {
+    display: flex;
+    margin-bottom: 0;
+    li {
+      margin: 24px;
+    }
+  }
+}

@@ -8,6 +8,10 @@ import FrontEnd from "../images/svgs/front-end_sm.svg";
 import UXUIDesign from "../images/svgs/ux-ui-design_sm.svg";
 import GraphicDesign from "../images/svgs/graphic-design_sm.svg";
 import Blob from "../components/SvgComponents/blob_svg";
+import IconDownload from "../components/SvgComponents/icon_download_svg";
+import IconPolygon from "../components/SvgComponents/icon_polygon_svg";
+import IconStar from "../components/SvgComponents/icon_star_svg";
+import IconListArm from "../components/SvgComponents/icon_list-arm_svg.js";
 
 const IndexPage = ({ data }) => {
   // const eye1 = document.querySelector(".pupila-b");
@@ -57,78 +61,95 @@ const IndexPage = ({ data }) => {
                 Mi meta es combinar la funcionalidad con lo estético en el diseño
                 con elementos narrativos que elevan cualquier concepto.
               </p>
-              <button className="btn btn-secondary text-with-icon">Descargar CV
+              <button className="btn btn-secondary text-with-icon">
+                Descargar CV
+                <IconDownload />
               </button>
             </div>
             <h3 className="subtitleHeading">Educación y Experiencia</h3>
-            <ul>
+            <ul className="icon-list list">
               <li>
-                <p>Licenciatura en Diseño Gráfico.</p>
-                <p>Benemérita Universidad Autónoma de Puebla.</p>
+                <IconPolygon className="bullet-icon" />
+                <p><strong>Licenciatura en Diseño Gráfico.</strong> 2015-2020.<br />
+                  Benemérita Universidad Autónoma de Puebla.</p>
               </li>
               <li>
-                <p>Intercambio Académico.</p>
-                <p>Universidad Nacional de Colombia. Bogotá, Colombia.</p>
+                <IconPolygon className="bullet-icon" />
+                <p><strong>Intercambio Académico.</strong> 2018.<br />
+                  Universidad Nacional de Colombia. Bogotá, Colombia.</p>
               </li>
               <li>
-                <p>Becario de diseño gráfico y web.</p>
-                <p>
+                <IconPolygon className="bullet-icon" />
+                <p><strong>Becario de diseño gráfico y web.</strong> 2019-2020.<br />
                   Dirección de Cómputo en la Benemérita Universidad Autónoma de
                   Puebla.
                 </p>
               </li>
             </ul>
             <h3 className="subtitleHeading">Especialidades</h3>
-            <ul>
+            <ul id="specialty-list" className="list inline-list">
               <li>
                 <UXUIDesign className="svg inline-svg svg-icon" />
-                {/* <img
-                className="specialtyIcon"
-                src="#"
-                alt="Ilustración de wireframe."
-              /> */}
-                Diseño UX/UI
+                <p>Diseño UX/UI</p>
               </li>
               <li>
                 <FrontEnd className="svg inline-svg svg-icon" />
-                Desarrollo Front End
+                <p>Desarrollo Front End</p>
               </li>
               <li>
                 <GraphicDesign className="svg inline-svg svg-icon" />
-                Diseño Gráfico
+                <p>Diseño Gráfico</p>
               </li>
             </ul>
             <h3 className="subtitleHeading">Metas</h3>
-            <ul>
+            <ul id="goals-list" className="icon-list list">
               <li>
-                Me interesa seguir refinando y aplicar mis habilidades en diseño
-                UX/UI.
+                <IconStar className="bullet-icon" />
+                <p>Me interesa seguir refinando y aplicar mis habilidades en diseño UX/UI.</p>
               </li>
               <li>
-                Mis proyectos ideales son digitales en ejecución, con amplia
-                comunicación con el cliente para dar en la clave del problema.
+                <IconStar className="bullet-icon" />
+                <p>Mis proyectos ideales son digitales en ejecución, con amplia comunicación con el cliente para dar en la clave del problema.</p>
               </li>
             </ul>
             <h3 className="subtitleHeading">Hobbies y Habilidades</h3>
-            <ul>
-              <li>Videojuegos</li>
-              <li>Música</li>
-              <li>Costura y Confección</li>
-              <li>Inglés (Nivel C1)</li>
-              <li>Japonés (Básico)こんにちわ！</li>
+            <ul id="hobby-list" className="list icon-list">
+              <li>
+                <IconListArm className="bullet-icon" />
+                <p>Videojuegos</p>
+              </li>
+              <li>
+                <IconListArm className="bullet-icon" />
+                <p>Música</p>
+              </li>
+              <li>
+                <IconListArm className="bullet-icon" />
+                <p>Costura y Confección</p>
+              </li>
+              <li>
+                <IconListArm className="bullet-icon" />
+                <p>Inglés (Nivel C1)</p>
+              </li>
+              <li>
+                <IconListArm className="bullet-icon" />
+                <p>Japonés (Básico)こんにちわ！</p>
+              </li>
             </ul>
           </div>
 
         </Section>
         <Section className="index-section" sectionTitle="Contacto" id="contacto">
           <div className="section-content">
-            <p>¡Estaré contento de hablar contigo!</p>
-          <a href="mailto:raulmezamontoya@gmail.com">
-            Email: raulmezamontoya@gmail.com
-          </a>
-          <a href="tel:2212064081">Tel: 2212064081</a>
+            <p className="greeting-contact">¡Estaré contento de hablar contigo!</p>
+            <div class="contact-link">
+              <a href="mailto:raulmezamontoya@gmail.com">
+                Email: raulmezamontoya@gmail.com
+              </a>
+            </div>
+            <div class="contact-link">
+              <a href="tel:2212064081">Tel: 2212064081</a>
+            </div>
           </div>
-
         </Section>
       </Layout>
     </div>

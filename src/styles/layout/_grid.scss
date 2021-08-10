@@ -1,3 +1,4 @@
+@use "sass:map";
 /**
 *
 * Grid styles
@@ -17,4 +18,5 @@ body, html {
 main > div.content {
   padding-left: 16px;
   padding-right: 16px;
+  margin-bottom: map.get($spacing, "lg");
 }

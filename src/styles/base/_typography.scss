@@ -4,8 +4,9 @@
 *
 */
 
-html, .root {
-  font-family: "Authentic Sans 60";
+html,
+.root {
+  font-family: "Authentic Sans", sans-serif;
   font-size: 16px;
   line-height: 24px;
   color: map.get($font-color, "dark");
@@ -24,8 +25,7 @@ html, .root {
   .h3,
   h4,
   .h4 {
-    display: inline-block;
-    font-family: "VG5000", "Authentic Sans 60", sans-serif;
+    font-family: "VG5000", "Authentic Sans", sans-serif;
   }
 }
 
@@ -88,6 +88,16 @@ ol ul {
   margin-bottom: 0rem;
 }
 
+/* Links */
+a,
+a:link,
+a:visited,
+a:hover,
+a:active {
+  text-decoration: none;
+  color: inherit;
+}
+
 /* Let's make sure all's aligned */
 hr,
 .hr {
@@ -113,4 +123,60 @@ sup {
 }
 sub {
   bottom: -0.25em;
+}
+
+/**
+* Lists
+*/
+ul.list {
+  li {
+    margin-bottom: 24px;
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+  }
+  p {
+    margin-bottom: 0; // For consistent typographic elements.
+  }
+}
+
+/**
+* Inline lists
+*/
+ul.inline-list {
+  li {
+    margin-bottom: 0;
+  }
+}
+
+/**
+* List with custom icons
+*/
+ul.icon-list {
+  // Width of the icon, for calculating padding of paragraph.
+  $icon-width: calc(#{map.get($spacing, "sm")} * 4);
+
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+  li {
+    // position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    p {
+      // margin-left: calc(#{$icon-width} + 16px);
+      margin-left: 16px;
+    }
+  }
+  // Custom icons
+  .bullet-icon {
+    // position: absolute;
+    // left: 0;
+    // top: 50%;
+    // transform: translateY(-50%);
+    flex: 0 0 auto;
+    width: $icon-width;
+    height: $icon-width;
+  }
 }

@@ -3,7 +3,7 @@ import { Link as a } from 'gatsby'
 
 const Footer = () => {
   return (
-    <footer className="footer mt-auto py-3 bg-light text-center">
+    <footer className="footer mt-auto py-3 text-center">
       <ul className="icons footer-icons list-inline d-flex justify-content-center">
         <li className="list-inline-item">
           <a href="https://dribbble.com">

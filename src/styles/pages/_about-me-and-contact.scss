@@ -1,0 +1,94 @@
+@use "sass:map";
+/**
+* About Me page styles
+*/
+
+/**
+* Introduction section "about me"
+*/
+.introduction {
+  .btn.btn-secondary {
+    display: block;
+    margin: auto;
+  }
+}
+
+/**
+* Especialidades - IndexPage
+*/
+#specialty-list {
+  list-style-type: none;
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+  li > p {
+    margin: map.get($spacing, "sm");
+  }
+}
+
+/**
+* Hobbies
+*/
+#hobby-list {
+  li {
+    // height: 48px;
+    margin: 0;
+    &:nth-child(2) {
+      margin-left: 16px;
+    }
+    &:nth-child(3) {
+      margin-left: 32px;
+    }
+    &:nth-child(4) {
+      margin-left: 48px;
+    }
+    &:nth-child(5) {
+      margin-left: 64px;
+    }
+    &:nth-child(6) {
+      margin-left: 80px;
+    }
+  }
+  .bullet-icon {
+    color: black;
+    stroke: black;
+    // align-self: flex-start;
+    width: 32px;
+    height: 52px;
+    margin-top: -4px;
+  }
+  p {
+    margin-bottom: -6px;
+    align-self: flex-end;
+  }
+}
+/**
+* Contact
+*/
+section#contacto {
+  font-family: "VG5000";
+  font-size: 1.625rem;
+  .contact-link {
+    margin: 24px 0;
+    // margin: 24px;
+    display: block;
+    font-size: 1.325rem;
+    height: 48px;
+    border-width: 0 0 4px 0;
+    border-style: solid;
+    border-image: linear-gradient(
+        to right,
+        $color-secondary,
+        $color-yellow,
+        $color-mint
+      )
+      30;
+    a {
+      color: $color-primary;
+      display: block;
+      padding-top: 8px;
+      padding-bottom: 8px;
+      // height: 100%;
+    }
+  }
+}
