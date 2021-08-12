@@ -4,8 +4,13 @@
 */
 .btn {
   font-family: "VG5000";
-  padding: 8px;
+  padding: 4px;
   border-radius: 0;
+  display: inline-flex;
+  flex-flow: column wrap;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
 }
 
 /**

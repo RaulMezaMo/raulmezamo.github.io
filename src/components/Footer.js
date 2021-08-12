@@ -1,5 +1,4 @@
 import * as React from 'react'
-import { Link as a } from 'gatsby'
 
 const Footer = () => {
   return (

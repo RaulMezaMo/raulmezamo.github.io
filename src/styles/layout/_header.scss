@@ -8,7 +8,7 @@ nav.navbar {
   padding: 0;
   position: sticky;
   top: 0;
-  height: 56px;
+  // height: 56px;
   
   .navbar-brand {
     svg {
@@ -68,19 +68,28 @@ nav.navbar {
 * Toggler
 */
 nav.navbar {
-  .navbar-toggler {
+  .navbar-toggler,
+  .toggler {
     border: 0;
     padding: 0;
+    // margin: 4px;
     @include focus-primary;
     .burger-menu {
-      margin: 16px;
+      padding: 8px;
+      // margin: 8px;
 
       span {
         display: block;
-        height: 4px;
-        width: 54px;
-        margin: 16px 0;
+        height: 3px;
+        width: 48px;
+        margin: 8px 0;
         background: $color-secondary;
+        &:first-child {
+          margin-top: 0;
+        }
+        &:last-child {
+          margin-bottom: 0;
+        }
       }
     }
   }

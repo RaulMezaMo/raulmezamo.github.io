@@ -18,7 +18,14 @@ module.exports = {
     {
       resolve: `gatsby-transformer-remark`,
       options: {
-        plugins: [`gatsby-remark-copy-linked-files`],
+        plugins: [
+          {
+            resolve: `gatsby-remark-copy-linked-files`,
+            options: {
+              destinationDir: `webp`
+            }
+          }
+        ],
       },
     },
     {
@@ -28,10 +35,11 @@ module.exports = {
           {
             resolve: `gatsby-remark-images`,
             options: {
+              maxWidth: 900,
               showCaptions: true,
               linkImagesToOriginal: true,
               withWebp: true,
-              quality: 90,
+              quality: 100,
             }
           }
         ]
@@ -53,6 +61,22 @@ module.exports = {
       },
       __key: "projects",
     },
+    {
+      resolve: "gatsby-source-filesystem",
+      options: {
+        name: "webps",
+        path: `${__dirname}/src/images/webp`,
+      },
+      __key: "webps",
+    },
+    // {
+    //   resolve: "gatsby-source-filesystem",
+    //   options: {
+    //     name: "gifs",
+    //     path: `${__dirname}/src/images/gifs`,
+    //   },
+    //   __key: "gifs",
+    // },
     {
       resolve: "gatsby-plugin-react-svg",
       options: {

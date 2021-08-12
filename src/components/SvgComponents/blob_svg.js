@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { useSpring, animated } from "react-spring";
+import React from "react";
+// import { useSpring, animated } from "react-spring";
 
 
 function SvgComponent() {
@@ -17,13 +17,10 @@ function SvgComponent() {
       viewBox="0 0 446 222"
       id="blob_svg"
     >
-      <filter id="blurMe">
-        <feGaussianBlur in="SourceGraphic" stdDeviation="5" />
-      </filter>
       <defs>
         <clipPath id="a">
           <path
-            d="M240.93 109.55s32.1 36.19 72 36.19c40.19 0 72-36.19 72-36.19s-31.85-36.18-72-36.18c-39.86 0-72 36.18-72 36.18z"
+            d="M240.93 109.55c2.8-3.74 34.76-36.17 70.79-36.17 42.16 0 70.63 32.74 73.2 36.17-2.63 3.54-34.34 36.19-72 36.19s-69.36-32.65-71.99-36.19z"
             fill="none"
           />
         </clipPath>
@@ -49,27 +46,7 @@ function SvgComponent() {
               strokeMiterlimit={10}
               strokeWidth={2}
             />
-            <g id="ojo-b" className="ojo">
-              <g clipPath="url(#a)">
-                <g className="pupila-b" data-name="pupila-b">
-                  <path
-                    d="M250.42 118.12c0-20.65 15.56-37.39 34.75-37.39s34.75 16.74 34.75 37.39-15.56 37.39-34.75 37.39-34.75-16.74-34.75-37.39"
-                    fill="url(#colorful-gradient)"
-                  />
-                  <path
-                    d="M307.4 88s-.63 19.65-19.79 19.65c0 0 19.94.77 19.94 19.8 0 0-.39-19.84 20-19.84 0 0-20.13.19-20.13-19.61M260.71 107.39S260.09 127 240.93 127c0 0 19.94.77 19.94 19.79 0 0-.39-19.83 20-19.83 0 0-20.14.19-20.14-19.61"
-                    fill="#fff"
-                  />
-                </g>
-              </g>
-              <path
-                d="M240.93 109.55c2.8-3.74 34.76-36.17 70.79-36.17 42.16 0 70.63 32.74 73.2 36.17-2.63 3.54-34.34 36.19-72 36.19s-69.36-32.65-71.99-36.19z"
-                fill="none"
-                stroke="#f572ef"
-                strokeMiterlimit={10}
-                strokeWidth={2}
-              />
-            </g>
+
             <g id="ojo-a" className="ojo">
               <g clipPath="url(#b)">
                 <g className="pupila-a" data-name="pupila-a">
@@ -85,6 +62,27 @@ function SvgComponent() {
               </g>
               <path
                 d="M39 109.55c2.8-3.74 34.76-36.17 70.79-36.17 42.17 0 70.64 32.74 73.2 36.17-2.63 3.54-34.34 36.19-72 36.19S41.67 113.09 39 109.55z"
+                fill="none"
+                stroke="#f572ef"
+                strokeMiterlimit={10}
+                strokeWidth={2}
+              />
+            </g>
+            <g id="ojo-b" className="ojo">
+              <g clipPath="url(#b)">
+                <g className="pupila-a" data-name="pupila-a">
+                  <path
+                    d="M250.42 118.12c0-20.65 15.56-37.39 34.75-37.39s34.75 16.74 34.75 37.39-15.56 37.39-34.75 37.39-34.75-16.74-34.75-37.39"
+                    fill="url(#colorful-gradient)"
+                  />
+                  <path
+                    d="M307.4 88s-.63 19.65-19.79 19.65c0 0 19.94.77 19.94 19.8 0 0-.39-19.84 20-19.84 0 0-20.13.19-20.13-19.61M260.71 107.39S260.09 127 240.93 127c0 0 19.94.77 19.94 19.79 0 0-.39-19.83 20-19.83 0 0-20.14.19-20.14-19.61"
+                    fill="#fff"
+                  />
+                </g>
+              </g>
+              <path
+                d="M240.93 109.55c2.8-3.74 34.76-36.17 70.79-36.17 42.16 0 70.63 32.74 73.2 36.17-2.63 3.54-34.34 36.19-72 36.19s-69.36-32.65-71.99-36.19z"
                 fill="none"
                 stroke="#f572ef"
                 strokeMiterlimit={10}
