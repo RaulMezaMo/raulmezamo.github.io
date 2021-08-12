@@ -3,23 +3,51 @@ import { Link } from 'gatsby'
 import Cara from '../components/SvgComponents/cara_svg.js'
 import { motion } from "framer-motion"
 
-const variants = {
-  open: { opacity: 1, x: 0 },
-  closed: { opacity: 0, x: "-100%" },
-}
-
 const Navbar = () => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [opened, setOpened] = useState(false);
+
+  const handleClick = () => {
+    setOpened(!opened);
+  }
+
   return (
-    <motion.nav initial={false} animate={isOpen ? "open" : "closed"}
-      variants={variants} className="navbar collapsable-navbar">
-      <button className="toggler" type="button" onClick={() => setIsOpen(isOpen => !isOpen)}>
-        <div className="icon burger-menu">
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
+    <motion.nav className="navbar collapsable-navbar">
+      <div className="navbar-logo">
+        <Link className="logo-link" to="/">
+          <Cara className="logo" />
+        </Link>
+      </div>
+      <button className="toggler" type="button" onClick={handleClick}>
+        <motion.div
+          className={`icon burger-menu ${opened ? "opened" : "closed"}`}
+          layout
+        >
+          <motion.span
+            animate={{ rotate: opened ? -45 : 0, y: opened ? 16 : 0 }}
+          ></motion.span>
+          <motion.span
+            style={{ originX: 0.5, originY: 0.5 }}
+            animate={{ opacity: opened ? 0 : 1, scaleX: opened ? 0 : 1 }}
+            transition={{ duration: .1 }}
+          ></motion.span>
+          <motion.span
+            animate={{ rotate: opened ? 45 : 0, y: opened ? -16 : 0 }}
+          ></motion.span>
+        </motion.div>
       </button>
+      <ul className="navbar-items">
+        <li className="nav-item">
+          <Link to="/" className="nav-link" activeClassName="active" partiallyActive={true}>Proyectos</Link>
+          <span className="divider">/</span>
+        </li>
+        <li className="nav-item">
+          <Link to="#acerca-de" className="nav-link" activeClassName="active" partiallyActive={true}>Acerca de</Link>
+          <span className="divider">/</span>
+        </li>
+        <li className="nav-item">
+          <Link to="#contacto" className="nav-link" activeClassName="active" partiallyActive={true}>Contacto</Link>
+        </li>
+      </ul>
     </motion.nav>
     // <nav className="navbar navbar-light sticky-top fixed-top navbar-expand-sm align-items-center justify-content-end">
     //   <div className="container-fluid">
