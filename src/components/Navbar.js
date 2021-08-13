@@ -1,17 +1,49 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link } from 'gatsby'
 import Cara from '../components/SvgComponents/cara_svg.js'
 import { motion } from "framer-motion"
 
 const Navbar = () => {
+
+  /**
+  * Triggerable navbar
+  **/
   const [opened, setOpened] = useState(false);
 
   const handleClick = () => {
     setOpened(!opened);
-  }
+  };
+
+  /**
+   * Detecting collapsable navbar on breakpoints
+   */
+
+  const smallBreakpoint = 992; //Breakpoint for collapsing navbar
+  const [width, setWidth] = useState(window.innerWidth);
+  const [deviceSize, setDeviceSize] = useState("small");
+
+  useEffect(() => {
+    window.addEventListener("resize", handleResize, false);
+    function handleResize() {
+      setWidth(window.innerWidth);
+      if (width > smallBreakpoint) {
+        setDeviceSize("big");
+        setOpened(false);
+      } else {
+        setDeviceSize("small");
+      }
+    }
+    return () => {
+      window.removeEventListener('resize', handleResize)
+    }
+  }, [width]);
+
+  // if (width > smallBreakpoint) {
+  //   setOpened(false);
+  // }
 
   return (
-    <motion.nav className="navbar collapsable-navbar">
+    <motion.nav className="navbar">
       <div className="navbar-logo">
         <Link className="logo-link" to="/">
           <Cara className="logo" />
@@ -35,17 +67,17 @@ const Navbar = () => {
           ></motion.span>
         </motion.div>
       </button>
-      <ul className="navbar-items">
+      <ul className={`navbar-items ${opened ? "opened-navbar" : "closed-navbar"} ${deviceSize == "small" ? "small-navbar" : "big-navbar"}`}>
         <li className="nav-item">
-          <Link to="/" className="nav-link" activeClassName="active" partiallyActive={true}>Proyectos</Link>
+          <Link to="/" className="nav-link" activeClassName="active" partiallyActive={true} onClick={handleClick}>Proyectos</Link>
           <span className="divider">/</span>
         </li>
         <li className="nav-item">
-          <Link to="#acerca-de" className="nav-link" activeClassName="active" partiallyActive={true}>Acerca de</Link>
+          <Link to="/#acerca-de" className="nav-link" activeClassName="active" partiallyActive={true} onClick={handleClick}>Acerca de</Link>
           <span className="divider">/</span>
         </li>
         <li className="nav-item">
-          <Link to="#contacto" className="nav-link" activeClassName="active" partiallyActive={true}>Contacto</Link>
+          <Link to="/#contacto" className="nav-link" activeClassName="active" partiallyActive={true} onClick={handleClick}>Contacto</Link>
         </li>
       </ul>
     </motion.nav>
