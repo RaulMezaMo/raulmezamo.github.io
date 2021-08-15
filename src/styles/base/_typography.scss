@@ -94,6 +94,7 @@ a:hover,
 a:active {
   text-decoration: none;
   color: inherit;
+  @include focus-primary;
 }
 
 /* Let's make sure all's aligned */

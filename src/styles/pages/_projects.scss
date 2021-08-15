@@ -4,11 +4,17 @@
 */
 
 /**
-* Heading
+* Variables
+*/
+
+$mobile-breakpoint: "lg";
+
+/**
+* Project Heading
 */
 .project-heading-section {
   position: sticky;
-  top: 56px;
+  top: 64px;
   display: inline-flex;
   min-width: calc((100% / 6) * 4);
   max-width: 100%;
@@ -76,5 +82,65 @@
     .btn:first-child {
       margin-right: 8px;
     }
+  }
+}
+
+/**
+* Small size Project Heading
+*/
+
+@include media-breakpoint-down($mobile-breakpoint) {
+  .project-heading-section {
+    width: 100%;
+    display: flex;
+    transition: width ease 80ms;
+  }
+}
+
+/**
+* Headers
+*/
+h3 {
+  text-decoration: underline;
+}
+h2 {
+  width: calc((100% / 6) * 4);
+}
+
+/**
+* Main Text
+*/
+.main-text {
+  width: 100%;
+
+  /**
+  * Big desktop size
+  */
+
+  @include media-breakpoint-up($mobile-breakpoint) {
+    position: relative;
+    top: 0;
+    // width: calc((100% / 6) * 3);
+    margin-left: calc((100% / 6) * 1);
+    p {
+      width: calc((100% / 6) * 3);
+    }
+  }
+
+  /**
+  * Small size main text
+  */
+  // @include media-breakpoint-down($mobile-breakpoint) {
+  //   width: 100%;
+  // }
+}
+
+/**
+* Images
+*/
+.gatsby-resp-image-figure {
+  @include media-breakpoint-up($mobile-breakpoint) {
+    margin-left: calc((100% / 6) * 1);
+    width: 130%;
   }
 }

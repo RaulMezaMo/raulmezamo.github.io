@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import Layout from "../../components/Layout"
-import { graphql, Link } from 'gatsby'
+import { graphql } from 'gatsby'
 import { MDXRenderer } from 'gatsby-plugin-mdx'
 import ArrowReturn from "../../components/SvgComponents/icon_arrow-return_svg.js"
 import ArrowUp from "../../components/SvgComponents/icon_arrow-up_svg.js"
-import { motion, useViewportScroll, useTransform } from "framer-motion"
+import { motion } from "framer-motion"
 
 const ProjectPage = ({ data }) => {
 
@@ -21,7 +21,7 @@ const ProjectPage = ({ data }) => {
     };
   }, []);
 
-  const { scrollY } = useViewportScroll();
+  // const { scrollY } = useViewportScroll();
 
   // const variants = {
   //   visible: { opacity: 1 },
@@ -32,7 +32,8 @@ const ProjectPage = ({ data }) => {
     <Layout>
       <article>
         {/* <motion.div layout className={`project-heading-section ${{ scrollY } > 0 ? "away-from-top" : ""}`}> */}
-        <motion.div layout className={`project-heading-section ${scrollPosition >= 8 ? "away-from-top" : ""}`}>
+        <motion.div layout className={`project-heading-section ${scrollPosition >= 8 ? "away-from-top" : ""}`}
+        >
           <motion.div layout className="button-container">
             <motion.a href="/" layout className="btn btn-secondary text-with-icon return-btn">
               Return

@@ -2,80 +2,101 @@
 @use "sass:math";
 
 /**
-* Navbar & items
+* Navbar
 */
 .navbar {
   position: sticky;
   top: 0;
   z-index: $zindex-sticky;
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px;
 }
-
 
 /**
 * Navbar Logo
 */
 .navbar .navbar-logo {
+  align-self: flex-start;
   .logo-link {
     display: block;
-    padding: 8px;
   }
 }
 
 /**
-* Navbar items
+* Navbar with items
 */
-.navbar .navbar-items {
-  display: flex;
-  padding: 0;
-  margin: 0;
-  position: absolute;
-  right: 0;
-  visibility: hidden;
-
-  font-family: "VG5000";
-  font-size: 1.25rem;
-  opacity: 0;
-  list-style-type: none;
-  transition: opacity ease 80ms;
-
-  @include media-breakpoint-up("lg") {
-    visibility: visible;
+.navbar {
+  .navbar-items {
+    display: flex;
+    padding: 0;
+    margin: 0;
+    position: relative;
     opacity: 1;
-  }
 
-  .nav-item {
-    display: inline-flex;
-    align-items: center;
-    &>* {
-      display: inline-block;
-      padding: 0;
-    }
-    .nav-link {
-      padding: 8px 16px;
-    }
-    .divider {
-      font-family: "Authentic Sans";
-      pointer-events: none;
-    }
-  }
+    font-family: "VG5000";
+    font-size: 1.25rem;
+    list-style-type: none;
 
-}
-
-/**
-* Navbar small size & opened
-*/
-.navbar-items.opened-navbar {
-  width: 100%;
-  padding: 32px;
-  flex-flow: column wrap;
-  top: 56px;
-  opacity: 1;
-  visibility: visible;
-  z-index: 1080;
-  border: 1px solid black;
-    background: hsl(0, 0%, 100%);
+    /**
+    * Item groups
+    */
     .nav-item {
+      display: inline-flex;
+      align-items: center;
+      & > * {
+        display: inline-block;
+        padding: 0;
+      }
+      .nav-link {
+        padding: 8px 16px;
+      }
+      .divider {
+        font-family: "Authentic Sans";
+        pointer-events: none;
+      }
+    }
+  }
 
+  /**
+  * Big Navbar for desktop and big screens.
+  */
+  &.big-navbar .navbar-items {
+    opacity: 1;
+    // @include media-breakpoint-down("lg") {
+    #menu_triangle {
+      opacity: 0;
+      visibility: hidden;
+    }
+    // }
+  }
+
+  /**
+  * Small navbar for cellphones.
+  */
+  &.small-navbar .navbar-items {
+    // opacity: 0;
+    position: absolute;
+    top: 88px;
+    width: calc(100% - 32px);
+    flex-flow: column wrap;
+    z-index: 1080;
+    
+    border: 1px solid black;
+    border-radius: 8px;
+    background: hsl(0, 0%, 100%);
+    
+    #menu_triangle {
+      position: absolute;
+      right: 20px;
+      top: -12px;
+      width: 16px;
+      height: 16px;
+    }
+    
+    .nav-item {
       &:nth-of-type(2) {
         align-self: center;
       }
@@ -84,6 +105,34 @@
       }
     }
   }
+  /**
+  * Big navbar
+  */
+  &.big-navbar .navbar-items {
+  #menu_triangle {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+}
+
+
+/**
+* Navbar Items states
+  */
+.navbar-items.closed-items {
+  opacity: 0;
+  visibility: hidden;
+  // transition: visibility ease .1s .2s;
+}
+// .navbar-items.open-items {
+//   opacity: 1;
+//   visibility: visible;
+//   #menu_triangle {
+//     opacity: 1;
+//     visibility: visible;
+//   }
+// }
 
 /**
 * Navbar Toggler (Button)
@@ -91,29 +140,27 @@
 .navbar .toggler {
   position: absolute;
   right: 0;
-  margin: 16px;
+  top: 0;
+  margin: 8px;
   padding: 8px;
   box-shadow: none;
   background: none;
   border: 0;
   border-radius: 8px;
   opacity: 1;
-  transition: opacity ease 80ms;
+  // transition: opacity ease 80ms;
 
   @include media-breakpoint-up("lg") {
     opacity: 0;
     visibility: hidden;
   }
 
-  &:focus,
-  &:focus-visible {
-    outline: 2px dotted $color-secondary;
-  }
+  @include focus-primary;
 
   .burger-menu {
     margin-bottom: 4px;
     height: 32px;
-    width: 43px;
+    width: 48px;
     position: relative;
     display: inline-block;
     vertical-align: middle;
@@ -121,112 +168,23 @@
     span {
       display: block;
       width: 100%;
-      height: 4px;
+      height: 3px;
       position: absolute;
       left: 0;
       top: 50%;
-      
+
       background: $color-secondary;
 
       &:first-of-type {
         top: 0;
       }
-      
+
       &:nth-of-type(3) {
         top: 100%;
       }
     }
   }
 }
-
-// nav.navbar {
-//   padding: 0;
-//   position: sticky;
-//   top: 0;
-//   // height: 56px;
-
-//   .navbar-brand {
-//     svg {
-//       height: 40px;
-//       width: 40px;
-//     }
-//   }
-
-//   .navbar-nav {
-//     align-items: center;
-
-//     @include media-breakpoint-down(sm) {
-//       align-items: flex-start;
-//       .element:first-child {
-//         margin: 0;
-//       }
-//       .element:nth-child(2) {
-//         // margin-left: calc();
-//         margin: 0 auto;
-//       }
-//       .element:nth-child(3) {
-//         // margin-left: 75%;
-//         margin-left: auto;
-//       }
-//     }
-//     .divider {
-//       pointer-events: none;
-//     }
-//     .nav-item {
-//       position: relative;
-//       margin: 16px;
-//       // height: 64px;
-//       font-family: "VG5000";
-//       // display: inline-block;
-//       display: inline-flex;
-//       justify-content: stretch;
-//       align-items: stretch;
-//     }
-//     .nav-link {
-//       z-index: 1;
-//       position: relative;
-//       display: flex;
-//       justify-content: center;
-//       align-items: center;
-//       line-height: 1.25rem;
-//       padding: 8px 16px;
-//       color: rgb(0, 0, 0);
-//     }
-//     .nav-item,
-//     .divider {
-//       font-size: 1.25rem;
-//     }
-//   }
-// }
-
-/**
-* Toggler
-*/
-// nav.navbar {
-//   .navbar-toggler,
-//   .toggler {
-//     border: 0;
-//     padding: 0;
-//     @include focus-primary;
-//     .burger-menu {
-//       padding: 8px;
-
-//       span {
-//         display: block;
-//         height: 3px;
-//         width: 48px;
-//         margin: 8px 0;
-//         background: $color-secondary;
-//         &:first-child {
-//           margin-top: 0;
-//         }
-//         &:last-child {
-//           margin-bottom: 0;
-//         }
-//       }
-//     }
-//   }
-// }
 
 /**
 * Active nav item
