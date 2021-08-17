@@ -29,10 +29,8 @@ const Layout = (props) => {
 
   return (
     <main>
-      <Navbar activeMenu={props.activeMenuProp} />
-      <div className="content container-md">
-        {props.children}
-      </div>
+      {/* <Navbar /> */}
+      {props.children}
       <Footer />
       <Helmet>
         <meta name="viewport" content="width=device-width, initial-scale=1"></meta>

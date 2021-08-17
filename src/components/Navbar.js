@@ -51,24 +51,9 @@ const Navbar = (activeMenu) => {
     }
   }
 
-
   useEffect(() => {
     window.addEventListener("resize", handleResize, false);
 
-    // function handleResize(deviceSize) {
-    //   setWidth(window.innerWidth);
-    //   if (width > smallBreakpoint) {
-    //     if (deviceSize !== "big") {
-    //       setDeviceSize("big");
-    //       setOpened(true);
-    //       animateNavbarItems.start("open");
-    //     }
-    //   } else {
-    //     setDeviceSize("small");
-    //     setOpened(false);
-    //     animateNavbarItems.start("closed");
-    //   }
-    // }
     handleResize();
     // console.log("use effect");
     return () => {
@@ -96,7 +81,7 @@ const Navbar = (activeMenu) => {
           animate={{ opacity: 1 }}
         >
           <motion.span
-            animate={{ rotate: opened ? -45 : 0, y: opened ? 16 : 0 }}
+            animate={{ rotate: opened ? -45 : 0, y: opened ? 12 : 0 }}
           ></motion.span>
           <motion.span
             style={{ originX: 0.5, originY: 0.5 }}
@@ -104,16 +89,14 @@ const Navbar = (activeMenu) => {
             transition={{ duration: .1 }}
           ></motion.span>
           <motion.span
-            animate={{ rotate: opened ? 45 : 0, y: opened ? -16 : 0 }}
+            animate={{ rotate: opened ? 45 : 0, y: opened ? -12 : 0 }}
           ></motion.span>
         </motion.div>
       </button>
       {/* Navbar elements and menu */}
-      {/* <AnimatePresence> */}
       <motion.ul
         className={`navbar-items ${opened ? "open-items" : "closed-items"}`}
         animate={animateNavbarItems}
-        // initial={opened ? "open" : "closed"}
         variants={navbarItemsVariants}
       >
         <svg id="menu_triangle" xmlns="http://www.w3.org/2000/svg" width="16" height="8" viewBox="0 0 16 8">
@@ -133,44 +116,7 @@ const Navbar = (activeMenu) => {
           <Link to="/#contacto" className="nav-link" activeClassName="active" partiallyActive={true} onClick={clickNavbarToggler}>Contacto</Link>
         </li>
       </motion.ul>
-      {/* </AnimatePresence> */}
     </motion.nav>
-    // <nav className="navbar navbar-light sticky-top fixed-top navbar-expand-sm align-items-center justify-content-end">
-    //   <div className="container-fluid">
-    //     <Link to="/" className="navbar-brand">
-    //       <Cara />
-    //     </Link>
-    //     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    //       <div class="icon burger-menu">
-    //         <span></span>
-    //         <span></span>
-    //         <span></span>
-    //       </div>
-    //     </button>
-    //     <div className="collapse navbar-collapse" id="navbarSupportedContent">
-    //       <ul className="navbar-nav ms-auto">
-    //         <div className="element">
-    //           <li className="nav-item"><Link to="/" className="nav-link" activeClassName="active" partiallyActive={true}>Proyectos</Link>
-    //             <div class="active_background"></div>
-    //           </li>
-    //           <span className="divider">/</span>
-    //         </div>
-    //         <div className="element">
-    //           <li className="nav-item"><Link to="#acerca-de" className="nav-link" activeClassName="active">Acerca de
-    //           </Link>
-    //             <div class="active_background"></div>
-    //           </li>
-    //           <span className="divider">/</span>
-    //         </div>
-    //         <div className="element">
-    //           <li className="nav-item"><Link to="#contacto" className="nav-link" activeClassName="active">Contacto</Link>
-    //             <div class="active_background"></div>
-    //           </li>
-    //         </div>
-    //       </ul>
-    //     </div>
-    //   </div>
-    // </nav>
   )
 }
 

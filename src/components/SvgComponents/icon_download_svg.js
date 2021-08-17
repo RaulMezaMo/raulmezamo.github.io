@@ -6,13 +6,14 @@ function SvgComponent(props) {
       width={16}
       height={17}
       viewBox="0 0 16 17"
-      fill="none"
+      fill="inherit"
+      stroke="inherit"
       xmlns="http://www.w3.org/2000/svg"
       {...props}
     >
-      <path d="M8 7V1" stroke="#333" strokeLinecap="round" />
-      <path d="M8 13l4-6H4l4 6z" stroke="#333" strokeLinejoin="round" />
-      <path fill="#333" d="M0 15H16V17H0z" />
+      <path d="M8 7V1" stroke="inherit" fill="none" strokeLinecap="round" />
+      <path d="M8 13l4-6H4l4 6z" stroke="inherit" fill="none" strokeLinejoin="round" />
+      <path fill="inherit" stroke="none" d="M0 15H16V17H0z" />
     </svg>
   )
 }

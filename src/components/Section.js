@@ -4,7 +4,7 @@ import * as React from 'react'
 const Section = (props) => {
   return (
     <section ref={props.containerRef} id={props.id} className={props.className}>
-      <header className="sectionIndicator">
+      <header style={props.sectionTitle ? {} : { height: 0 }} className="sectionIndicator">
         <h2 className="sectionHeader">{props.sectionTitle}</h2>
       </header>
       {props.children}
