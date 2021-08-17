@@ -1,7 +1,8 @@
-import * as React from "react";
+import React, { useState, useEffect } from "react";
 // import { Helmet } from "react-helmet";
 import { graphql, Link } from "gatsby";
 import { GatsbyImage } from "gatsby-plugin-image";
+import { useInView } from "react-intersection-observer";
 import Layout from "../components/Layout";
 import Section from "../components/Section";
 import FrontEnd from "../images/svgs/front-end_sm.svg";
@@ -13,22 +14,32 @@ import IconStar from "../components/SvgComponents/icon_star_svg";
 import IconListArm from "../components/SvgComponents/icon_list-arm_svg.js";
 
 const IndexPage = ({ data }) => {
-  // const eye1 = document.querySelector(".pupila-b");
-  // const eye2 = document.querySelector(".pupila-a");
-  // if (eye1 && eye2 !== undefined) {
-  //   window.addEventListener('mousemove', (evt) => {
-  //     const x = -(window.innerWidth / 2 - evt.pageX) / 160;
-  //     const y = -(window.innerHeight / 2 - evt.pageY) / 160;
-  //     // console.log(x, y);
-  //     eye1.style.transform = `translateY(${y}px) translateX(${x}px)`;
-  //     eye2.style.transform = `translateY(${y}px) translateX(${x}px)`;
-  //   });
-  // };
+
+  const [activeMenu, setActiveMenu] = useState("projects");
+
+  // INTERSECTION OBSERVER
+  const [aboutMeRef, aboutMeInView] = useInView({ threshold: .5 });
+  const [projectsRef, projectsInView] = useInView({ threshold: .5 });
+  const [contactRef, contactInView] = useInView({ threshold: .5 });
+
+  useEffect(() => {
+    if (projectsInView) {
+      setActiveMenu("projects");
+    } else if (aboutMeInView) {
+      setActiveMenu("about-me");
+    } else if (contactInView) {
+      setActiveMenu("contact");
+    }
+    // this.props.parentCallback(activeMenu);
+  }, [projectsInView, aboutMeInView, contactInView]);
 
   return (
     <div className="index">
-      <Layout>
-        <div className="projectsGallery">
+      <Layout activeMenuProp={activeMenu}>
+
+        {/* Section: Projects */}
+        {/* <div className="projectsGallery"> */}
+        <Section containerRef={projectsRef} className="projectsGallery">
           <div className="headerBlob">
             <div id="indexBlob" className="blob">
               <svg id="blob_svg" xmlns="http://www.w3.org/2000/svg" width="446" height="222" viewBox="0 0 446 222"><defs><clipPath id="clip-path"><path id="mask-pupila-b" d="M240.93,109.55s32.1,36.19,72,36.19c40.19,0,72-36.19,72-36.19s-31.85-36.18-72-36.18C273.07,73.37,240.93,109.55,240.93,109.55Z" fill="none" /></clipPath><clipPath id="clip-path-2"><path id="mask-pupila-a" d="M39,109.55s32.1,36.19,72,36.19c40.19,0,72-36.19,72-36.19s-31.85-36.18-72-36.18C71.18,73.37,39,109.55,39,109.55Z" fill="none" /></clipPath></defs><g id="Layer_2" data-name="Layer 2"><g id="Blobs"><g id="index-blob"><path id="borde-blob" d="M401.43,13.63c-46.75-34.35-92,12-201.2,14.07-93.46,1.74-127.76-31-164.16-.94C6.69,51-1.32,97.35,1.54,129.92,3,146.77,5.83,182.44,30.26,202.2c57,46.11,145.73-54.58,243.73-7.51,23.7,11.38,39.81,27.22,70,26.27,32.67-1,66.42-21,85.4-52.42C455.49,125.2,441.6,80,438.93,71.32,436.39,63,427,32.38,401.43,13.63Z" fill="none" stroke="#f572ef" stroke-miterlimit="10" stroke-width="2" /><g id="ojo-b"><g id="pupila-b"><g clip-path="url(#clip-path)"><g id="pupila-b-2" data-name="pupila-b"><path id="fondo-pupila-b" d="M250.42,118.12c0-20.65,15.56-37.39,34.75-37.39s34.75,16.74,34.75,37.39-15.56,37.39-34.75,37.39-34.75-16.74-34.75-37.39" fill="#f572ef" /><path id="brillo-2-b" d="M307.4,88s-.63,19.65-19.79,19.65c0,0,19.94.77,19.94,19.8,0,0-.39-19.84,20-19.84,0,0-20.13.19-20.13-19.61" fill="#fff" /><path id="brillo-1-b" d="M260.71,107.39S260.09,127,240.93,127c0,0,19.94.77,19.94,19.79,0,0-.39-19.83,20-19.83,0,0-20.14.19-20.14-19.61" fill="#fff" /></g></g></g><path id="borde-pupila-b" d="M240.93,109.55c2.8-3.74,34.76-36.17,70.79-36.17,42.16,0,70.63,32.74,73.2,36.17-2.63,3.54-34.34,36.19-72,36.19S243.56,113.09,240.93,109.55Z" fill="none" stroke="#f572ef" stroke-miterlimit="10" stroke-width="2" /></g><g id="ojo-a"><g id="pupila-a"><g clip-path="url(#clip-path-2)"><g id="pupila-a-2" data-name="pupila-a"><path id="fondo-pupila-a" d="M48.53,118.12c0-20.65,15.56-37.39,34.75-37.39S118,97.47,118,118.12s-15.56,37.39-34.75,37.39-34.75-16.74-34.75-37.39" fill="#f572ef" /><path id="brillo-2-a" d="M105.51,88s-.63,19.65-19.79,19.65c0,0,19.94.77,19.94,19.8,0,0-.39-19.84,20-19.84,0,0-20.13.19-20.13-19.61" fill="#fff" /><path id="brillo-1-a" d="M58.83,107.39S58.2,127,39,127c0,0,19.94.77,19.94,19.79,0,0-.39-19.83,20-19.83,0,0-20.13.19-20.13-19.61" fill="#fff" /></g></g></g><path id="borde-pupila-a" d="M39,109.55c2.8-3.74,34.76-36.17,70.79-36.17,42.17,0,70.64,32.74,73.2,36.17-2.63,3.54-34.34,36.19-72,36.19S41.67,113.09,39,109.55Z" fill="none" stroke="#f572ef" stroke-miterlimit="10" stroke-width="2" /></g></g></g></g></svg>
@@ -47,12 +58,17 @@ const IndexPage = ({ data }) => {
               </Link>
             );
           })}
-        </div>
-        {/*------------------------------------------------------*/}
+        </Section>
+
         {/* Section: About me */}
-        <Section className="index-section" sectionTitle="Acerca de" id="acerca-de">
+        <Section containerRef={aboutMeRef} className="index-section" sectionTitle={`Acerca de`} id="acerca-de">
+          {/* <h2 className="sectionHeader">Acerca de</h2> */}
           <div className="section-content">
+            {`Projects: ${projectsInView} `}
+            {`About Me: ${aboutMeInView} `}
+            {`Contact: ${contactInView} `}
             <div className="introduction">
+              {/* {`${aboutMeInView}`} */}
               <p>
                 ¡Mucho gusto! Me llamo Raúl Meza Montoya soy diseñador gráfico de
                 Puebla, México.
@@ -136,9 +152,9 @@ const IndexPage = ({ data }) => {
               </li>
             </ul>
           </div>
-
         </Section>
-        <Section className="index-section" sectionTitle="Contacto" id="contacto">
+        {/* Section: Contacto */}
+        <Section containerRef={contactRef} className="index-section" sectionTitle="Contacto" id="contacto">
           <div className="section-content">
             <p className="greeting-contact">¡Estaré contento de hablar contigo!</p>
             <div class="contact-link">

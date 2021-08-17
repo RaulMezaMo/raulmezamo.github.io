@@ -25,6 +25,7 @@ html,
   h4,
   .h4 {
     font-family: "VG5000", "Authentic Sans", sans-serif;
+    color: map.get($font-color, "dark")
   }
 
 h1,
@@ -77,6 +78,7 @@ table,
 blockquote {
   margin-top: 0rem;
   margin-bottom: 1.5rem;
+  color: map.get($font-color, "dark");
 }
 ul ul,
 ol ol,

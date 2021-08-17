@@ -16,7 +16,11 @@ body, html {
 }
 
 main > div.content {
-  padding-left: 16px;
-  padding-right: 16px;
+  max-width: 100%;
+  padding: 0 80px;
   margin-bottom: map.get($spacing, "lg");
+
+  @include media-breakpoint-down("sm") {
+    padding: 0 16px;
+  }
 }

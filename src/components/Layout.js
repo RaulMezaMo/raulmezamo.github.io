@@ -1,13 +1,14 @@
-import * as React from 'react'
+import React, { useState, useEffect } from 'react'
 import Navbar from './Navbar'
 import Footer from './Footer'
+import { useInView } from "react-intersection-observer";
 import { graphql, useStaticQuery } from "gatsby";
 import { Helmet } from "react-helmet";
 import '../styles/main.scss'
 import '../../vendors/font-awesome/css/fontawesome.min.css'
 import '../../vendors/font-awesome/css/brands.min.css'
 
-const Layout = ({ children }) => {
+const Layout = (props) => {
   const data = useStaticQuery(graphql`
   query {
      allFile(filter: { relativeDirectory: { eq: "thumbnails" }},  sort: {fields: name}) {
@@ -25,11 +26,12 @@ const Layout = ({ children }) => {
       }
     }
   }`);
+
   return (
     <main>
-      <Navbar />
-      <div className="content container-lg">
-        {children}
+      <Navbar activeMenu={props.activeMenuProp} />
+      <div className="content container-md">
+        {props.children}
       </div>
       <Footer />
       <Helmet>

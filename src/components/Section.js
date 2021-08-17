@@ -1,12 +1,13 @@
 import * as React from 'react'
 
-const Section = ({ sectionTitle, children, id }) => {
+// const Section = ({ sectionTitle, children, id, className }) => {
+const Section = (props) => {
   return (
-    <section id={id}>
+    <section ref={props.containerRef} id={props.id} className={props.className}>
       <header className="sectionIndicator">
-        <h2 className="sectionHeader">{sectionTitle}</h2>
+        <h2 className="sectionHeader">{props.sectionTitle}</h2>
       </header>
-      {children}
+      {props.children}
     </section>
   )
 }

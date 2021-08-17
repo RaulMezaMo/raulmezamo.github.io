@@ -7,12 +7,12 @@
 * Variables
 */
 
-$mobile-breakpoint: "lg";
+$mobile-breakpoint: "md";
 
 /**
 * Project Heading
 */
-.project-heading-section {
+article.project .project-heading-section {
   position: sticky;
   top: 64px;
   display: inline-flex;
@@ -73,9 +73,19 @@ $mobile-breakpoint: "lg";
 /**
 * Heading Away from top
 */
-.project-heading-section.away-from-top {
+article.project .project-heading-section.away-from-top {
   height: 56px;
   // transition: height ease-in-out 180ms;
+
+  .heading-title {
+    padding-top: 0;
+    padding-bottom: 0;
+    align-items: flex-start;
+  }
+
+  .projectHeading {
+    top: 0;
+  }
 
   .button-container {
     flex-flow: row nowrap;
@@ -90,7 +100,7 @@ $mobile-breakpoint: "lg";
 */
 
 @include media-breakpoint-down($mobile-breakpoint) {
-  .project-heading-section {
+  article.project .project-heading-section {
     width: 100%;
     display: flex;
     transition: width ease 80ms;
@@ -100,47 +110,136 @@ $mobile-breakpoint: "lg";
 /**
 * Headers
 */
-h3 {
-  text-decoration: underline;
-}
-h2 {
-  width: calc((100% / 6) * 4);
+article.project section {
+  h2 {
+    position: relative;
+    padding: 8px;
+    border: 2px solid map.get($font-color, "light");
+    display: flex;
+    background: radial-gradient(ellipse at top left, $color-mint 0%,hsla(0, 0%, 100%, 0%) 70%);
+  
+    // Number in header text
+    .number {
+      margin-right: 32px;
+      height: 100%;
+    }
+  }
+  h3 {
+    text-decoration: underline;
+  }
 }
 
 /**
-* Main Text
+* Text
 */
-.main-text {
-  width: 100%;
-
+article.project .main-text {
   /**
   * Big desktop size
   */
-
   @include media-breakpoint-up($mobile-breakpoint) {
     position: relative;
     top: 0;
-    // width: calc((100% / 6) * 3);
-    margin-left: calc((100% / 6) * 1);
-    p {
-      width: calc((100% / 6) * 3);
+  }
+}
+
+/**
+  * Images
+  */
+article.project .image {
+  @include media-breakpoint-up($mobile-breakpoint) {
+    $column-size: 1;
+    // margin-left: calc(
+    //   (100% - ((#{$total-columns} - 1) * 32px)) / #{$total-columns}
+    // );
+    margin-left: calc(
+      ((100% - ((#{$total-columns} - 1) * 32px)) / #{$total-columns}) * #{$column-size}
+    );
+  }
+}
+
+/**
+* Images - Captions
+*/
+article.project figcaption,
+article.project .gatsby-resp-image-figcaption {
+  margin-top: 8px;
+
+  // Info icon
+  &:before {
+    content: "i";
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    margin-right: 8px;
+
+    color: $color-primary;
+    font-family: "Authentic Sans";
+    font-weight: bold;
+    font-size: 0.7rem;
+    line-height: .8rem;
+    text-align: center;
+    border: 1px solid $color-primary;
+    border-radius: 50%;
+  }
+}
+
+/**
+* Sections
+*/
+article.project section {
+  $column-size: 4;
+
+  @include media-breakpoint-up("lg") {
+    margin-left: calc(
+        (100% - ((#{$total-columns} - 1) * 32px)) / #{$total-columns}
+      );
+  }
+
+  p:last-child {
+    margin-bottom: 0;
+  }
+
+  & > p,
+  h4,
+  h3,
+  h2,
+  div {
+    max-width: 700px;
+    width: 100%;
+
+    @include media-breakpoint-up("lg") {
+      width: calc(
+        (
+            ((100% - ((#{$total-columns} - 1) * 32px)) / #{$total-columns}) * #{$column-size}
+          ) + (32px * (#{$column-size} - 1))
+      );
     }
   }
 
   /**
-  * Small size main text
+  * Section - Details - two column list
   */
-  // @include media-breakpoint-down($mobile-breakpoint) {
-  //   width: 100%;
-  // }
-}
-
-/**
-* Images
-*/
-.gatsby-resp-image-figure {
-  @include media-breakpoint-up($mobile-breakpoint) {
-    margin-left: calc((100% / 6) * 1);
-    width: 130%;
+  &.details {
+    .columns-list {
+      display: flex;
+      flex-flow: row wrap;
+      h3 {
+        flex: 1 0 100%;
+      }
+      dl {
+        flex: 50%;
+        margin-right: 0;
+        margin-top: 0;
+        margin-bottom: 0;
+        &:nth-of-type(odd) {
+          padding-right: 24px;
+        }
+        &:nth-of-type(even) {
+          margin-left: 0;
+          border-left: 2px solid map.get($font-color, "dark");
+          padding-left: 24px;
+        }
+      }
+    }
   }
 }

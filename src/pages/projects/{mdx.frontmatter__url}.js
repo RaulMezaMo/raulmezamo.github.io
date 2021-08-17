@@ -30,7 +30,7 @@ const ProjectPage = ({ data }) => {
 
   return (
     <Layout>
-      <article>
+      <article className="project">
         {/* <motion.div layout className={`project-heading-section ${{ scrollY } > 0 ? "away-from-top" : ""}`}> */}
         <motion.div layout className={`project-heading-section ${scrollPosition >= 8 ? "away-from-top" : ""}`}
         >

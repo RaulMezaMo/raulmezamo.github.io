@@ -9,6 +9,8 @@
 .index {
   // Colorful underline headers indexPage
   .sectionHeader {
+    margin-top: 64px;
+    margin-bottom: 64px;
     width: calc((100% / 6) * 4);
     border-width: 0 0 4px 0;
     border-style: solid;

@@ -3,7 +3,7 @@ import { Link } from 'gatsby'
 import Cara from '../components/SvgComponents/cara_svg.js'
 import { motion, useMotionValue, useAnimation } from "framer-motion"
 
-const Navbar = () => {
+const Navbar = (activeMenu) => {
 
   /**
    * Animation variables & functions
@@ -21,57 +21,64 @@ const Navbar = () => {
   const [opened, setOpened] = useState(false);
 
   const clickNavbarToggler = (e) => {
-    animateNavbarItems.start(opened ? "closed" : "open");
-    setOpened(!opened);
-    console.log(e);
-    y.get() !== 8 ? y.set(8) : y.set(0);
+    if (deviceSize === "small") {
+      animateNavbarItems.start(opened ? "closed" : "open");
+      setOpened(!opened);
+      y.get() !== 8 ? y.set(8) : y.set(0);
+    }
   };
 
   /**
    * Detecting collapsable navbar on breakpoints
    */
 
-  const smallBreakpoint = 992; //Breakpoint for collapsing navbar
+  const smallBreakpoint = 576; //Breakpoint for collapsing navbar
   const [width, setWidth] = useState(window.innerWidth);
   const [deviceSize, setDeviceSize] = useState("small");
 
-  // function handleResize() {
-  //   setWidth(window.innerWidth);
-  //   if (width > smallBreakpoint) {
-  //     if (deviceSize !== "big") {
-  //       setDeviceSize("big");
-  //       setOpened(true);
-  //       // animateNavbarItems.start("open");
-  //     }
-  //   } else {
-  //     setDeviceSize("small");
-  //     setOpened(false);
-  //     // animateNavbarItems.start("closed");
-  //   }
-  // }
+  function handleResize(deviceSize) {
+    setWidth(window.innerWidth);
+    if (width > smallBreakpoint) {
+      if (deviceSize !== "big") {
+        setDeviceSize("big");
+        setOpened(true);
+        animateNavbarItems.start("open");
+      }
+    } else {
+      setDeviceSize("small");
+      setOpened(false);
+      animateNavbarItems.start("closed");
+    }
+  }
+
 
   useEffect(() => {
     window.addEventListener("resize", handleResize, false);
 
-    function handleResize(deviceSize) {
-      setWidth(window.innerWidth);
-      if (width > smallBreakpoint) {
-        if (deviceSize !== "big") {
-          setDeviceSize("big");
-          setOpened(true);
-          animateNavbarItems.start("open");
-        }
-      } else {
-        setDeviceSize("small");
-        setOpened(false);
-        animateNavbarItems.start("closed");
-      }
-    }
-    console.log("use effect");
+    // function handleResize(deviceSize) {
+    //   setWidth(window.innerWidth);
+    //   if (width > smallBreakpoint) {
+    //     if (deviceSize !== "big") {
+    //       setDeviceSize("big");
+    //       setOpened(true);
+    //       animateNavbarItems.start("open");
+    //     }
+    //   } else {
+    //     setDeviceSize("small");
+    //     setOpened(false);
+    //     animateNavbarItems.start("closed");
+    //   }
+    // }
+    handleResize();
+    // console.log("use effect");
     return () => {
       window.removeEventListener('resize', handleResize)
     }
   }, [width]);
+
+  useEffect(() => {
+    console.log(activeMenu);
+  }, { activeMenu });
 
   return (
     <motion.nav className={`navbar ${deviceSize === "small" ? "small-navbar" : "big-navbar"}`} >
