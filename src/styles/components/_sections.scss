@@ -7,9 +7,12 @@
 * Section Headings
 */
 .index {
+  section {
+    padding-top: 64px;
+  }
   // Colorful underline headers indexPage
   .sectionHeader {
-    margin-top: 64px;
+    margin-top: 0;
     margin-bottom: 64px;
     width: calc((100% / 6) * 4);
     border-width: 0 0 4px 0;

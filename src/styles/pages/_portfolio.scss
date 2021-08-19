@@ -71,7 +71,8 @@
 /*
 * Thumbnails
 */
-.projectsGallery {
+.index .projectsGallery {
+  padding-top: 0;
   a:first-of-type {
     flex: 1 100%;
     @include media-breakpoint-up(lg) {

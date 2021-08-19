@@ -148,15 +148,21 @@ const IndexPage = ({ data }) => {
               </g>
             </svg>
             <li className="nav-item">
-              <Link to="/" id="projects-link" className={`nav-link ${activeMenu === "projects" ? "active" : ""}`} onClick={clickNavbarToggler}>Proyectos</Link>
+              <Link to="/" id="projects-link" className={`nav-link ${activeMenu === "projects" ? "active" : ""}`} onClick={clickNavbarToggler}><span className="text">
+                Proyectos
+              </span></Link>
               <span className="divider">/</span>
             </li>
             <li className="nav-item">
-              <Link to="/#acerca-de" id="about-me-link" className={`nav-link ${activeMenu === "about-me" ? "active" : ""}`} partiallyActive={true} onClick={clickNavbarToggler}>Acerca de</Link>
+              <Link to="/#acerca-de" id="about-me-link" className={`nav-link ${activeMenu === "about-me" ? "active" : ""}`} partiallyActive={true} onClick={clickNavbarToggler}><span className="text">
+                Acerca de
+              </span></Link>
               <span className="divider">/</span>
             </li>
             <li className="nav-item">
-              <Link to="/#contacto" id="contact-link" className={`nav-link ${activeMenu === "contact" ? "active" : ""}`} partiallyActive={true} onClick={clickNavbarToggler}>Contacto</Link>
+              <Link to="/#contacto" id="contact-link" className={`nav-link ${activeMenu === "contact" ? "active" : ""}`} partiallyActive={true} onClick={clickNavbarToggler}><span className="text">
+                Contacto
+              </span></Link>
             </li>
           </motion.ul>
         </motion.nav>

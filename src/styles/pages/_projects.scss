@@ -257,7 +257,10 @@ article.project section {
   * Section - Brief
   */
   &.brief {
+    position: relative;
+    // List
     dl {
+      position: relative;
       margin-left: 64px;
       dt {
         margin-left: 8px;
@@ -272,6 +275,15 @@ article.project section {
         display: list-item;
 
       }
+    }
+    // Arrow svg for list side
+    #brief-arrows {
+      position: absolute;
+      left: 0;
+      top: 0;
+      margin-left: -64px;
+      margin-top: -24px;
+      height: 100%;
     }
   }
 }
