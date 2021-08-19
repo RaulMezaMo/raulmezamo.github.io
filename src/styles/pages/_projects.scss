@@ -14,7 +14,7 @@ $mobile-breakpoint: "md";
 */
 article.project .project-heading-section {
   position: sticky;
-  top: 64px;
+  top: 56px;
   display: inline-flex;
   min-width: calc((100% / 6) * 4);
   max-width: 100%;
@@ -56,6 +56,7 @@ article.project .project-heading-section {
     .projectHeading {
       margin: 0;
       z-index: 1;
+      font-size: 2.625rem;
     }
     #heading-bg {
       width: 100%;
@@ -124,8 +125,16 @@ article.project section {
       height: 100%;
     }
   }
+  // Section subtitles
   h3 {
     text-decoration: underline;
+  }
+
+  // Brief questions
+  h4 {
+    height: 2rem;
+    color: $color-primary;
+    font-size: 1.625rem;
   }
 }
 
@@ -133,6 +142,9 @@ article.project section {
 * Text
 */
 article.project .main-text {
+  strong {
+    color: $color-primary;
+  }
   /**
   * Big desktop size
   */
@@ -146,11 +158,10 @@ article.project .main-text {
   * Images
   */
 article.project .image {
+  max-width: 100%;
   @include media-breakpoint-up($mobile-breakpoint) {
     $column-size: 1;
-    // margin-left: calc(
-    //   (100% - ((#{$total-columns} - 1) * 32px)) / #{$total-columns}
-    // );
+    max-width: 94%;
     margin-left: calc(
       ((100% - ((#{$total-columns} - 1) * 32px)) / #{$total-columns}) * #{$column-size}
     );
@@ -239,6 +250,27 @@ article.project section {
           border-left: 2px solid map.get($font-color, "dark");
           padding-left: 24px;
         }
+      }
+    }
+  }
+  /**
+  * Section - Brief
+  */
+  &.brief {
+    dl {
+      margin-left: 64px;
+      dt {
+        margin-left: 8px;
+        color: $color-primary;
+        font-family: "VG5000";
+        font-size: 1.625rem;
+        line-height: 48px;
+        font-weight: normal;
+      }
+      dd {
+        margin-left: 24px;
+        display: list-item;
+
       }
     }
   }

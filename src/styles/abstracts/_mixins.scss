@@ -20,15 +20,25 @@
 */
 
 @mixin focus-primary {
+  transition: box-shadow ease 0.18s;
   // On mouse focus only
   &:not([disabled]):focus:not(:focus-visible) {
-    outline-style: dotted;
-    outline-width: thin;
+    outline: none;
+    box-shadow: none;
   }
   // On keyboard focus only
   &:not([disabled]):focus-visible {
-    outline: 2px dashed $color-primary;
-    box-shadow: none;
+    // outline: 1px dashed color.adjust($color-secondary, $alpha: -0.2);
+    border-width: 2px;
+    border-style: solid;
+    border-image: linear-gradient(
+        to right,
+        $color-secondary,
+        $color-yellow,
+        $color-mint
+      )
+      30;
+    box-shadow: 0 0 2px 8px color.adjust($color-yellow, $alpha: -0.2);
   }
 }
 
@@ -41,13 +51,10 @@
     outline: none;
     box-shadow: none;
   }
-  // &:not([disabled]):focus:not(:focus-visible) {
-  //   box-shadow: 1px 1px 0 0 $color-secondary, 2px 2px 0 0 $color-secondary, 3px 3px 0 0 $color-secondary, 4px 4px 0 0 $color-secondary, 5px 5px 0 0 $color-secondary;
-  // }
 
   // On keyboard focus only
   &:not([disabled]):focus-visible {
-    border-color: $color-secondary;
+    border: 1px solid $color-secondary;
     outline: 4px solid color.adjust($color-secondary, $alpha: -0.75);
   }
 }
@@ -59,53 +66,38 @@
   // box-shadow: 0 1px 2px rgba(0,0,0,0.15);
   transition: transform ease 0.2s;
 
-  &:after {
-    left: 0px;
+  // Background
+  &:before {
     content: "";
     position: absolute;
     top: 0px;
-    width: calc(100% + 2px);
-    height: calc(100% + 2px);
-    opacity: 0;
-    pointer-events: none;
-    z-index: -1;
-    box-shadow: 1px 1px 0 0 $color-secondary, 2px 2px 0 0 $color-secondary,
-      3px 3px 0 0 $color-secondary, 4px 4px 0 0 $color-secondary,
-      5px 5px 0 0 $color-secondary, 6px 6px 0 0 $color-secondary;
-    transition: opacity 0.1s ease-in-out;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    z-index: 0;
+  }
 
-    // background-image: linear-gradient(144deg, #af40ff, #5b42f3 50%, #00ddeb);
-    // transform-origin: top left;
-    // transform: translate(-50%, -50%) scale(.8);
-    // transform: translate(-4px, -4px) scale(1);
-    // transition: transform ease .18s;
-    // clip-path: polygon( calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px), 0 0);
+  // Hover box effect
+  &:after {
+    content: "";
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 110%;
+    height: 110%;
+    pointer-events: none;
+    z-index: -2;
+    transform: translate(0, 0);
+    transition: transform ease-in-out 0.1s, opacity 0.1s ease-in-out;
+    background-image: linear-gradient(45deg, $color-mint, $color-secondary 50%, $color-yellow);
+    transform-origin: top left;
   }
 
   &:not([disabled]):hover {
     &:after {
       opacity: 1;
+      transform: translate(6px, 6px);
     }
-  }
-}
-
-/**
-* :hover secondary-button
-*/
-@mixin hover-secondary-button {
-  @include hover-button;
-  transition: all ease-in-out .18s;
-  &:not([disabled]):hover {
-    border-color: $color-secondary;
-    p {
-      color: $color-primary;
-    }
-    svg {
-      stroke: $color-primary;
-      fill: $color-primary;
-    }
-    // color: $color-primary;
-    // fill: $color-primary;
-    // stroke: $color-primary;
   }
 }

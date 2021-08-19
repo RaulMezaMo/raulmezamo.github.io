@@ -73,7 +73,7 @@ const Navbar = (activeMenu) => {
         </Link>
       </div>
       {/* Toggler */}
-      <button className="toggler" type="button" onClick={clickNavbarToggler}>
+      <motion.button className="toggler" type="button" whileTap={{ scale: 0.8 }} onClick={clickNavbarToggler}>
         <motion.div
           className={`icon burger-menu`}
           layout
@@ -92,7 +92,7 @@ const Navbar = (activeMenu) => {
             animate={{ rotate: opened ? 45 : 0, y: opened ? -12 : 0 }}
           ></motion.span>
         </motion.div>
-      </button>
+      </motion.button>
       {/* Navbar elements and menu */}
       <motion.ul
         className={`navbar-items ${opened ? "open-items" : "closed-items"}`}

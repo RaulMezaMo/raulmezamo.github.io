@@ -116,7 +116,7 @@ const IndexPage = ({ data }) => {
             </Link>
           </div>
           {/* Toggler */}
-          <button className="toggler" type="button" onClick={clickNavbarToggler}>
+          <motion.button className="toggler" type="button" onClick={clickNavbarToggler}>
             <motion.div
               className={`icon burger-menu`}
               layout
@@ -135,7 +135,7 @@ const IndexPage = ({ data }) => {
                 animate={{ rotate: opened ? 45 : 0, y: opened ? -12 : 0 }}
               ></motion.span>
             </motion.div>
-          </button>
+          </motion.button>
           {/* Navbar elements and menu */}
           <motion.ul
             className={`navbar-items ${opened ? "open-items" : "closed-items"}`}
@@ -280,14 +280,10 @@ const IndexPage = ({ data }) => {
           <Section containerRef={contactRef} className="index-section" sectionTitle="Contacto" id="contacto">
             <div className="section-content">
               <p className="greeting-contact">¡Estaré contento de hablar contigo!</p>
-              <div class="contact-link">
-                <a href="mailto:raulmezamontoya@gmail.com">
-                  Email: raulmezamontoya@gmail.com
-                </a>
-              </div>
-              <div class="contact-link">
-                <a href="tel:2212064081">Tel: 2212064081</a>
-              </div>
+              <a className="contact-link" href="mailto:raulmezamontoya@gmail.com">
+                Email: raulmezamontoya@gmail.com
+              </a>
+              <a className="contact-link" href="tel:2212064081">Tel: 2212064081</a>
             </div>
           </Section>
         </div>
