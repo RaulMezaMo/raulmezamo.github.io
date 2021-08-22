@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react'
-import Navbar from './Navbar'
+// import React, { useState, useEffect } from 'react'
+import * as React from 'react'
+// import Navbar from './Navbar'
 import Footer from './Footer'
-import { useInView } from "react-intersection-observer";
+// import { useInView } from "react-intersection-observer";
 import { graphql, useStaticQuery } from "gatsby";
 import { Helmet } from "react-helmet";
 import '../styles/main.scss'
@@ -35,6 +36,7 @@ const Layout = (props) => {
       <Helmet>
         <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
         <title>{data.site.siteMetadata.title}</title>
+        <script src="https://cdn.jsdelivr.net/npm/lightgallery@2.2.0/lightgallery.umd.min.js"></script>
       </Helmet>
     </main>
 

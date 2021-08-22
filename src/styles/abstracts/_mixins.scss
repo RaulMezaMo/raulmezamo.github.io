@@ -101,3 +101,12 @@
     }
   }
 }
+
+/**
+  * Reduce animation
+  */
+  @mixin prefers-reduced-fallback {
+    @media (prefers-reduced-motion) {
+      animation-name: dissolve;
+  }
+}

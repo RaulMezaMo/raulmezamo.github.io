@@ -53,34 +53,80 @@ const IndexPage = ({ data }) => {
   const [width, setWidth] = useState(window.innerWidth);
   const [deviceSize, setDeviceSize] = useState("small");
 
-  function handleResize(deviceSize) {
+  function debounce(fn, ms) {
+    let timer
+    return _ => {
+      clearTimeout(timer)
+      timer = setTimeout(_ => {
+        timer = null
+        fn.apply(this, arguments)
+      }, ms)
+    };
+  }
+
+  function handleResize() {
+
+    console.log("-------------");
     setWidth(window.innerWidth);
-    if (width > smallBreakpoint) {
-      if (deviceSize !== "big") {
+      // if (width === smallBreakpoint) {
+      //   console.log("width == smallBreakpoint");
+      //   setDeviceSize("big");
+      //   setOpened(true);
+      //   animateNavbarItems.start("opened");
+      //   console.log("opened: ", opened);
+      // }
+      if (width < smallBreakpoint) {
+        setDeviceSize("small");
+        setOpened(false);
+        animateNavbarItems.start("closed");
+        console.log("small size");
+      } else if (width >= smallBreakpoint) {
         setDeviceSize("big");
         setOpened(true);
         animateNavbarItems.start("open");
-      }
-    } else {
-      setDeviceSize("small");
-      setOpened(false);
-      animateNavbarItems.start("closed");
+      console.log("big size");
     }
+    // if (width >= smallBreakpoint) {
+    //   if (deviceSize === "small") {
+    //     console.log("device size small: ", deviceSize);
+    //   } else if (deviceSize === "big") {
+    //     console.log("device size big: ", deviceSize);
+    //   } else {
+    //     console.log("device size unknown: ", deviceSize);
+    //   }
+    // } else if (width < smallBreakpoint) {
+
+    // }
+    //   if (deviceSize !== "big") {
+    //     setDeviceSize("big");
+    //     setOpened(true);
+    //     animateNavbarItems.start("open");
+    //   }
+    // } else {
+    //   setDeviceSize("small");
+    //   setOpened(false);
+    //   animateNavbarItems.start("closed");
+    // }
+    // console.log("handle resize, device size: ", deviceSize);
   }
 
   useEffect(() => {
-    window.addEventListener("resize", handleResize, false);
-
     handleResize();
-    // console.log("use effect");
+  }, []);
+
+  useEffect(() => {
+    window.addEventListener("resize", handleResize, false);
+    // console.log(width);
+    handleResize();
+    // console.log("use effect for width, device size: ", deviceSize);
     return () => {
       window.removeEventListener('resize', handleResize)
     }
   }, [width]);
 
-  useEffect(() => {
-    console.log(activeMenu);
-  }, { activeMenu });
+  // useEffect(() => {
+  //   console.log(activeMenu);
+  // }, { activeMenu });
 
   /**
    * PROJECTS
@@ -118,7 +164,7 @@ const IndexPage = ({ data }) => {
           {/* Toggler */}
           <motion.button className="toggler" type="button" onClick={clickNavbarToggler}>
             <motion.div
-              className={`icon burger-menu`}
+              className={`icon burger-menu ${opened ? "close-button" : "open-button"}`}
               layout
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}

@@ -64,6 +64,15 @@ module.exports = {
     {
       resolve: "gatsby-source-filesystem",
       options: {
+        name: "project-images",
+        path: `${__dirname}/projects/`,
+        ignore: [`*.mdx`]
+      },
+      __key: "project-images",
+    },
+    {
+      resolve: "gatsby-source-filesystem",
+      options: {
         name: "webps",
         path: `${__dirname}/src/images/webp`,
       },

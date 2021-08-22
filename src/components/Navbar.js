@@ -37,6 +37,7 @@ const Navbar = (activeMenu) => {
   const [deviceSize, setDeviceSize] = useState("small");
 
   function handleResize(deviceSize) {
+    console.log("handle resize");
     setWidth(window.innerWidth);
     if (width > smallBreakpoint) {
       if (deviceSize !== "big") {
@@ -52,18 +53,25 @@ const Navbar = (activeMenu) => {
   }
 
   useEffect(() => {
+    // window.addEventListener("resize", handleResize, false);
     window.addEventListener("resize", handleResize, false);
 
     handleResize();
-    // console.log("use effect");
     return () => {
+      // window.removeEventListener('resize', handleResize)
       window.removeEventListener('resize', handleResize)
     }
   }, [width]);
 
   useEffect(() => {
-    console.log(activeMenu);
-  }, { activeMenu });
+    // write your code here, it's like componentWillMount
+    handleResize();
+  }, [])
+
+
+  // useEffect(() => {
+  //   console.log(activeMenu);
+  // }, { activeMenu });
 
   return (
     <motion.nav className={`navbar ${deviceSize === "small" ? "small-navbar" : "big-navbar"}`} >

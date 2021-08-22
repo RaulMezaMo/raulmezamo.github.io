@@ -34,10 +34,22 @@
   margin-left: 8px;
   align-self: flex-start;
   z-index: 1;
+  transform: scale(1);
+  transition: transform ease 0.18s;
+
   .logo-link {
     border-radius: 50%;
     display: block;
     padding: 4px;
+  }
+
+  /**
+  * States
+  */
+
+  //Active
+  &:active {
+    transform: scale(.9);
   }
 }
 
@@ -68,7 +80,10 @@
         display: inline-block;
         padding: 0;
       }
-      // Links
+
+      /**
+        * Links
+        */
       .nav-link {
         position: relative;
         padding: 8px 16px;
@@ -79,7 +94,7 @@
           transition: transform ease 0.18s;
         }
 
-        // Active indicator
+        // Link indicator
         &:before {
           content: "";
           position: absolute;
@@ -97,14 +112,22 @@
           border-color: transparent;
           transition: transform ease 0.18s;
         }
-
-        //Active indicator styling
         &.active {
           &:before {
             transform: scale(1);
             border-color: $color-secondary;
           }
         }
+
+        /**
+          *
+          * States
+          *
+        */
+
+        /**
+          * Hover
+        */
 
         // Hover indicator
         &:after {
@@ -119,25 +142,41 @@
             $color-yellow,
             transparent 80%
           );
-          // visibility: hidden;
           opacity: 0;
           z-index: -1;
-          transition: opacity ease 0.18s;
+          transform-origin: bottom center;
+          transition: opacity ease 0.18s, transform ease 0.18s;
         }
-        /**
-        * Hover state
-        */
+
+        //Hover state link
         &:hover {
+          // Text up
           .text {
             transform: translateY(-4px);
           }
+          // Glow appears
           &:after {
             opacity: 1;
-            // visibility: visible;
-            transition: opacity ease 0.18s;
+            transition: opacity ease 0.18s, transform ease 0.18s;
+          }
+        }
+
+        /**
+          * Active
+          */
+        &:active {
+          // Text down
+          .text {
+            transform: translateY(-2px);
+          }
+          &:after {
+            transform: scale(0.8);
           }
         }
       }
+      /**
+        * Dividers  
+        */
       .divider {
         font-family: "Authentic Sans";
         pointer-events: none;
@@ -146,26 +185,27 @@
   }
 
   /**
-  * Big Navbar for desktop and big screens.
+    *
+    * Big Navbar for desktop and big screens.
+    *
   */
   &.big-navbar {
     height: 48px;
+
     .navbar-items {
       height: 100%;
       opacity: 1;
-      .divider {
-        display: none;
-      }
+
       .nav-item {
-        border-left: 1px solid color.adjust($color-secondary, $alpha: -0.6);
+        // border-left: 1px solid color.adjust($color-secondary, $alpha: -0.6);
         // border-left: 1px solid color.adjust($color-primary, $alpha: -0.7);
       }
-      // @include media-breakpoint-down("lg") {
+
+      // Triangle for bubble disappears
       #menu_triangle {
         opacity: 0;
         visibility: hidden;
       }
-      // }
     }
   }
 
@@ -247,10 +287,15 @@
   opacity: 1;
   // transition: opacity ease 80ms;
 
-  @include media-breakpoint-up("sm") {
+  @media screen and ( min-width: 577px) {
     opacity: 0;
     visibility: hidden;
   }
+
+  // @include media-breakpoint-up("sm") {
+  //   opacity: 0;
+  //   visibility: hidden;
+  // }
 
   @include focus-primary;
 
