@@ -1,9 +1,85 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useLayoutEffect } from 'react'
 import { Link } from 'gatsby'
 import Cara from '../components/SvgComponents/cara_svg.js'
 import { motion, useMotionValue, useAnimation } from "framer-motion"
 
+/**
+ * Get window size
+ */
+function useWindowSize() {
+  const [size, setSize] = useState([0, 0]);
+  useLayoutEffect(() => {
+    function updateSize() {
+      setSize([window.innerWidth, window.innerHeight]);
+    }
+    window.addEventListener('resize', updateSize);
+    updateSize();
+    return () => window.removeEventListener('resize', updateSize);
+  }, []);
+  return size;
+}
+
+/**
+ * Navbar component
+ */
 const Navbar = (activeMenu) => {
+
+  /**
+   * Variables and states
+   */
+  const smallBreakpoint = 576; //Breakpoint for collapsing navbar
+  const [deviceSize, setDeviceSize] = useState("small");
+  const [width, height] = useWindowSize();
+  //Open navbar state
+  const [opened, setOpened] = useState(false);
+
+  /**
+   * Set navbar size based on width
+   */
+  useEffect(() => {
+    // console.log("-------------");
+    // console.log("handle resize");
+    // console.log("width: ", width);
+    if (width > smallBreakpoint) {
+      if (deviceSize !== "big") {
+        setDeviceSize("big");
+        setOpened(true);
+        animateNavbarItems.start("open");
+      }
+    } else {
+      setDeviceSize("small");
+      setOpened(false);
+      animateNavbarItems.start("closed");
+    }
+  }, [width]);
+
+  //Original
+  // useEffect((deviceSize, width) => {
+  //   console.log("handle resize");
+  //   const handleResize = () => setWidth(getWidth());
+  //   if (width > smallBreakpoint) {
+  //     if (deviceSize !== "big") {
+  //       setDeviceSize("big");
+  //       setOpened(true);
+  //       animateNavbarItems.start("open");
+  //     }
+  //   } else {
+  //     setDeviceSize("small");
+  //     setOpened(false);
+  //     animateNavbarItems.start("closed");
+  //   }
+  //   return () => window.removeEventListener("resize", handleResize);
+  // }, []);
+
+  // const getWidth = () => {
+  //   if (typeof window !== `undefined`) {
+  //     return {
+  //       width: window.innerWidth,
+  //     }
+  //   };
+  // };
+
+  // const [width, setWidth] = useState(getWidth());
 
   /**
    * Animation variables & functions
@@ -18,8 +94,6 @@ const Navbar = (activeMenu) => {
   /**
   * Triggerable navbar
   **/
-  const [opened, setOpened] = useState(false);
-
   const clickNavbarToggler = (e) => {
     if (deviceSize === "small") {
       animateNavbarItems.start(opened ? "closed" : "open");
@@ -32,47 +106,47 @@ const Navbar = (activeMenu) => {
    * Detecting collapsable navbar on breakpoints
    */
 
-  const smallBreakpoint = 576; //Breakpoint for collapsing navbar
-  const [width, setWidth] = useState(window.innerWidth);
-  const [deviceSize, setDeviceSize] = useState("small");
 
-  function handleResize(deviceSize) {
-    console.log("handle resize");
-    setWidth(window.innerWidth);
-    if (width > smallBreakpoint) {
-      if (deviceSize !== "big") {
-        setDeviceSize("big");
-        setOpened(true);
-        animateNavbarItems.start("open");
-      }
-    } else {
-      setDeviceSize("small");
-      setOpened(false);
-      animateNavbarItems.start("closed");
-    }
-  }
+  // function handleResize(deviceSize) {
+  //   console.log("handle resize");
+  //   setWidth(window.innerWidth);
+  //   if (width > smallBreakpoint) {
+  //     if (deviceSize !== "big") {
+  //       setDeviceSize("big");
+  //       setOpened(true);
+  //       animateNavbarItems.start("open");
+  //     }
+  //   } else {
+  //     setDeviceSize("small");
+  //     setOpened(false);
+  //     animateNavbarItems.start("closed");
+  //   }
+  // }
 
-  useEffect(() => {
-    // window.addEventListener("resize", handleResize, false);
-    window.addEventListener("resize", handleResize, false);
+  // useEffect(() => {
+  //   // window.addEventListener("resize", handleResize, false);
+  //   window.addEventListener("resize", handleResize, false);
 
-    handleResize();
-    return () => {
-      // window.removeEventListener('resize', handleResize)
-      window.removeEventListener('resize', handleResize)
-    }
-  }, [width]);
+  //   handleResize();
+  //   return () => {
+  //     // window.removeEventListener('resize', handleResize)
+  //     window.removeEventListener('resize', handleResize)
+  //   }
+  // }, [width]);
 
-  useEffect(() => {
-    // write your code here, it's like componentWillMount
-    handleResize();
-  }, [])
+  // useEffect(() => {
+  //   // write your code here, it's like componentWillMount
+  //   handleResize();
+  // }, [])
 
 
   // useEffect(() => {
   //   console.log(activeMenu);
   // }, { activeMenu });
 
+  /**
+   * Navbar return
+   */
   return (
     <motion.nav className={`navbar ${deviceSize === "small" ? "small-navbar" : "big-navbar"}`} >
       <div className="navbar-logo">
