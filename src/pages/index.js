@@ -89,91 +89,26 @@ const IndexPage = ({ data }) => {
   };
 
   /**
-   * Detecting collapsable navbar on breakpoints
+   * Scrolling
    */
+  const [scrollPosition, setScrollPosition] = useState(0);
+  const handleScroll = () => {
+    const position = window.pageYOffset;
+    setScrollPosition(position);
+  };
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll, { passive: true });
 
-  // function debounce(fn, ms) {
-  //   let timer
-  //   return _ => {
-  //     clearTimeout(timer)
-  //     timer = setTimeout(_ => {
-  //       timer = null
-  //       fn.apply(this, arguments)
-  //     }, ms)
-  //   };
-  // }
-
-  // function handleResize() {
-
-  //   console.log("-------------");
-  //   setWidth(window.innerWidth);
-    // if (width === smallBreakpoint) {
-    //   console.log("width == smallBreakpoint");
-    //   setDeviceSize("big");
-    //   setOpened(true);
-    //   animateNavbarItems.start("opened");
-    //   console.log("opened: ", opened);
-    // }
-    // if (width < smallBreakpoint) {
-    //   setDeviceSize("small");
-    //   setOpened(false);
-    //   animateNavbarItems.start("closed");
-    //   console.log("small size");
-    // } else if (width >= smallBreakpoint) {
-    //   setDeviceSize("big");
-    //   setOpened(true);
-    //   animateNavbarItems.start("open");
-    //   console.log("big size");
-    // }
-    // if (width >= smallBreakpoint) {
-    //   if (deviceSize === "small") {
-    //     console.log("device size small: ", deviceSize);
-    //   } else if (deviceSize === "big") {
-    //     console.log("device size big: ", deviceSize);
-    //   } else {
-    //     console.log("device size unknown: ", deviceSize);
-    //   }
-    // } else if (width < smallBreakpoint) {
-
-    // }
-    //   if (deviceSize !== "big") {
-    //     setDeviceSize("big");
-    //     setOpened(true);
-    //     animateNavbarItems.start("open");
-    //   }
-    // } else {
-    //   setDeviceSize("small");
-    //   setOpened(false);
-    //   animateNavbarItems.start("closed");
-    // }
-    // console.log("handle resize, device size: ", deviceSize);
-  // }
-
-  // useEffect(() => {
-  //   handleResize();
-  // }, []);
-
-  // useEffect(() => {
-  //   window.addEventListener("resize", handleResize, false);
-  //   // console.log(width);
-  //   handleResize();
-  //   // console.log("use effect for width, device size: ", deviceSize);
-  //   return () => {
-  //     window.removeEventListener('resize', handleResize)
-  //   }
-  // }, [width]);
-
-  // useEffect(() => {
-  //   console.log(activeMenu);
-  // }, { activeMenu });
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
 
   /**
-   * PROJECTS
+   * Project active scrolling
    */
-
   const [activeMenu, setActiveMenu] = useState("projects");
-
-  // INTERSECTION OBSERVER
+  // Intersection Observer with useInView
   const [aboutMeRef, aboutMeInView] = useInView({ threshold: .5 });
   const [projectsRef, projectsInView] = useInView({ threshold: .5 });
   const [contactRef, contactInView] = useInView({ threshold: .5 });
@@ -198,7 +133,7 @@ const IndexPage = ({ data }) => {
       <Layout>
         {/* Inline Nav */}
         {/* The nav here allows the state of the scrolling to tell it in which section it is */}
-        <motion.nav className={`navbar ${deviceSize === "small" ? "small-navbar" : "big-navbar"}`} >
+        <motion.nav className={`navbar ${deviceSize === "small" ? "small-navbar" : "big-navbar"} ${scrollPosition >= 8 ? "away-from-top" : ""}`} >
           <div className="navbar-logo">
             <Link className="logo-link" to="/">
               <Cara className="logo" />
@@ -294,7 +229,7 @@ const IndexPage = ({ data }) => {
                   con elementos narrativos que elevan cualquier concepto.
                 </p>
                 <div className="btn-container">
-                  <Button type="secondary" classes="text-with-icon">
+                  <Button href={data.file.publicURL} id="index-cv-download" type="secondary" classes="text-with-icon">
                     <p>Descargar CV</p>
                     <IconDownload />
                   </Button>
@@ -407,6 +342,10 @@ export const query = graphql`
       siteMetadata {
         title
       }
+    }
+    file(name: {eq: "cv_raul-meza-montoya"}) {
+      id
+      publicURL
     }
   }
 `;

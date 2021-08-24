@@ -143,6 +143,7 @@ article.project section {
 * Text
 */
 article.project .main-text {
+  margin-top: 32px;
   strong {
     color: $color-primary;
   }
@@ -158,7 +159,9 @@ article.project .main-text {
 /**
   * Images
   */
-article.project .image {
+article.project div.image {
+  margin-top: 24px;
+  margin-bottom: 24px;
   max-width: 100%;
   @include media-breakpoint-up($mobile-breakpoint) {
     $column-size: 1;
@@ -207,9 +210,9 @@ article.project section {
       );
   }
 
-  p:last-child {
-    margin-bottom: 0;
-  }
+  // p:last-child {
+  //   margin-bottom: 0;
+  // }
 
   & > p,
   h4,

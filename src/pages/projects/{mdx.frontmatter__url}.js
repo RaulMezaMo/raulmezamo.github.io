@@ -8,20 +8,20 @@ import { MDXRenderer } from 'gatsby-plugin-mdx'
 import ArrowReturn from "../../components/SvgComponents/icon_arrow-return_svg.js"
 import ArrowUp from "../../components/SvgComponents/icon_arrow-up_svg.js"
 import { motion } from "framer-motion"
-import { Swiper, SwiperSlide } from "swiper/react"
-import SwiperCore, { Navigation, Thumbs } from "swiper/core"
+// import { Swiper, SwiperSlide } from "swiper/react"
+// import SwiperCore, { Navigation, Thumbs } from "swiper/core"
 
-// Import Swiper styles
-import "swiper/swiper.min.css";
-import "swiper/components/navigation/navigation.min.css"
-import "swiper/components/thumbs/thumbs.min.css"
+// // Import Swiper styles
+// import "swiper/swiper.min.css";
+// import "swiper/components/navigation/navigation.min.css"
+// import "swiper/components/thumbs/thumbs.min.css"
 
-SwiperCore.use([Navigation, Thumbs]);
+// SwiperCore.use([Navigation, Thumbs]);
 
 const ProjectPage = ({ data }) => {
 
   //Swiper
-  const [thumbsSwiper, setThumbsSwiper] = useState(null);
+  // const [thumbsSwiper, setThumbsSwiper] = useState(null);
 
   //Scrolls
   const [scrollPosition, setScrollPosition] = useState(0);
@@ -139,7 +139,9 @@ const ProjectPage = ({ data }) => {
               </div> */}
             {/* </div> */}
             {/* Content */}
+            <div className="main-text">
             <MDXRenderer>{data.mdx.body}</MDXRenderer>
+            </div>
           </article>
         </div>
       </Layout>

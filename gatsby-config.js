@@ -64,6 +64,14 @@ module.exports = {
     {
       resolve: "gatsby-source-filesystem",
       options: {
+        name: "files",
+        path: `${__dirname}/src/files`,
+      },
+      __key: "files",
+    },
+    {
+      resolve: "gatsby-source-filesystem",
+      options: {
         name: "project-images",
         path: `${__dirname}/projects/`,
         ignore: [`*.mdx`]
