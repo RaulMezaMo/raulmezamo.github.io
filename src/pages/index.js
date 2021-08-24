@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useLayoutEffect } from "react";
 // import { Helmet } from "react-helmet";
 import { graphql, Link } from "gatsby";
 import { GatsbyImage } from "gatsby-plugin-image";
@@ -16,11 +16,56 @@ import IconPolygon from "../components/SvgComponents/icon_polygon_svg";
 import IconStar from "../components/SvgComponents/icon_star_svg";
 import IconListArm from "../components/SvgComponents/icon_list-arm_svg.js";
 
+/**
+ * Get window size
+ */
+function useWindowSize() {
+  const [size, setSize] = useState([0, 0]);
+  useLayoutEffect(() => {
+    function updateSize() {
+      setSize([window.innerWidth, window.innerHeight]);
+    }
+    window.addEventListener('resize', updateSize);
+    updateSize();
+    return () => window.removeEventListener('resize', updateSize);
+  }, []);
+  return size;
+}
+
+/**
+ * Index/Main page component
+ */
 const IndexPage = ({ data }) => {
 
   /**
-   * NAVBAR
+   * Variables and states
    */
+  const smallBreakpoint = 576; //Breakpoint for collapsing navbar
+  // const [width, setWidth] = useState(window.innerWidth);
+  const [width, height] = useWindowSize();
+  const [deviceSize, setDeviceSize] = useState("small");
+  //Open navbar state
+  const [opened, setOpened] = useState(false);
+
+  /**
+   * Set navbar size based on width
+   */
+  useEffect(() => {
+    // console.log("-------------");
+    // console.log("handle resize");
+    // console.log("width: ", width);
+    if (width > smallBreakpoint) {
+      if (deviceSize !== "big") {
+        setDeviceSize("big");
+        setOpened(true);
+        animateNavbarItems.start("open");
+      }
+    } else {
+      setDeviceSize("small");
+      setOpened(false);
+      animateNavbarItems.start("closed");
+    }
+  }, [width]);
 
   /**
    * Animation variables & functions
@@ -35,8 +80,6 @@ const IndexPage = ({ data }) => {
   /**
   * Triggerable navbar
   **/
-  const [opened, setOpened] = useState(false);
-
   const clickNavbarToggler = (e) => {
     if (deviceSize === "small") {
       animateNavbarItems.start(opened ? "closed" : "open");
@@ -49,43 +92,39 @@ const IndexPage = ({ data }) => {
    * Detecting collapsable navbar on breakpoints
    */
 
-  const smallBreakpoint = 576; //Breakpoint for collapsing navbar
-  const [width, setWidth] = useState(window.innerWidth);
-  const [deviceSize, setDeviceSize] = useState("small");
+  // function debounce(fn, ms) {
+  //   let timer
+  //   return _ => {
+  //     clearTimeout(timer)
+  //     timer = setTimeout(_ => {
+  //       timer = null
+  //       fn.apply(this, arguments)
+  //     }, ms)
+  //   };
+  // }
 
-  function debounce(fn, ms) {
-    let timer
-    return _ => {
-      clearTimeout(timer)
-      timer = setTimeout(_ => {
-        timer = null
-        fn.apply(this, arguments)
-      }, ms)
-    };
-  }
+  // function handleResize() {
 
-  function handleResize() {
-
-    console.log("-------------");
-    setWidth(window.innerWidth);
-      // if (width === smallBreakpoint) {
-      //   console.log("width == smallBreakpoint");
-      //   setDeviceSize("big");
-      //   setOpened(true);
-      //   animateNavbarItems.start("opened");
-      //   console.log("opened: ", opened);
-      // }
-      if (width < smallBreakpoint) {
-        setDeviceSize("small");
-        setOpened(false);
-        animateNavbarItems.start("closed");
-        console.log("small size");
-      } else if (width >= smallBreakpoint) {
-        setDeviceSize("big");
-        setOpened(true);
-        animateNavbarItems.start("open");
-      console.log("big size");
-    }
+  //   console.log("-------------");
+  //   setWidth(window.innerWidth);
+    // if (width === smallBreakpoint) {
+    //   console.log("width == smallBreakpoint");
+    //   setDeviceSize("big");
+    //   setOpened(true);
+    //   animateNavbarItems.start("opened");
+    //   console.log("opened: ", opened);
+    // }
+    // if (width < smallBreakpoint) {
+    //   setDeviceSize("small");
+    //   setOpened(false);
+    //   animateNavbarItems.start("closed");
+    //   console.log("small size");
+    // } else if (width >= smallBreakpoint) {
+    //   setDeviceSize("big");
+    //   setOpened(true);
+    //   animateNavbarItems.start("open");
+    //   console.log("big size");
+    // }
     // if (width >= smallBreakpoint) {
     //   if (deviceSize === "small") {
     //     console.log("device size small: ", deviceSize);
@@ -108,21 +147,21 @@ const IndexPage = ({ data }) => {
     //   animateNavbarItems.start("closed");
     // }
     // console.log("handle resize, device size: ", deviceSize);
-  }
+  // }
 
-  useEffect(() => {
-    handleResize();
-  }, []);
+  // useEffect(() => {
+  //   handleResize();
+  // }, []);
 
-  useEffect(() => {
-    window.addEventListener("resize", handleResize, false);
-    // console.log(width);
-    handleResize();
-    // console.log("use effect for width, device size: ", deviceSize);
-    return () => {
-      window.removeEventListener('resize', handleResize)
-    }
-  }, [width]);
+  // useEffect(() => {
+  //   window.addEventListener("resize", handleResize, false);
+  //   // console.log(width);
+  //   handleResize();
+  //   // console.log("use effect for width, device size: ", deviceSize);
+  //   return () => {
+  //     window.removeEventListener('resize', handleResize)
+  //   }
+  // }, [width]);
 
   // useEffect(() => {
   //   console.log(activeMenu);
@@ -150,6 +189,10 @@ const IndexPage = ({ data }) => {
     }
   }, [projectsInView, aboutMeInView, contactInView]);
 
+
+  /**
+   * Index/Main Page return
+   */
   return (
     <div className="index">
       <Layout>
