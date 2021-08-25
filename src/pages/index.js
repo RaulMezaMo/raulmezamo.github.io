@@ -196,23 +196,24 @@ const IndexPage = ({ data }) => {
           {/* <div className="projectsGallery"> */}
           <Section containerRef={projectsRef} className="projectsGallery">
             <div className="headerBlob">
+              <h1>¡Hola! Soy Raul Meza Montoya, diseñador gráfico y web.</h1>
               <div id="indexBlob" className="blob">
                 <svg id="blob_svg" xmlns="http://www.w3.org/2000/svg" width="446" height="222" viewBox="0 0 446 222"><defs><clipPath id="clip-path"><path id="mask-pupila-b" d="M240.93,109.55s32.1,36.19,72,36.19c40.19,0,72-36.19,72-36.19s-31.85-36.18-72-36.18C273.07,73.37,240.93,109.55,240.93,109.55Z" fill="none" /></clipPath><clipPath id="clip-path-2"><path id="mask-pupila-a" d="M39,109.55s32.1,36.19,72,36.19c40.19,0,72-36.19,72-36.19s-31.85-36.18-72-36.18C71.18,73.37,39,109.55,39,109.55Z" fill="none" /></clipPath></defs><g id="Layer_2" data-name="Layer 2"><g id="Blobs"><g id="index-blob"><path id="borde-blob" d="M401.43,13.63c-46.75-34.35-92,12-201.2,14.07-93.46,1.74-127.76-31-164.16-.94C6.69,51-1.32,97.35,1.54,129.92,3,146.77,5.83,182.44,30.26,202.2c57,46.11,145.73-54.58,243.73-7.51,23.7,11.38,39.81,27.22,70,26.27,32.67-1,66.42-21,85.4-52.42C455.49,125.2,441.6,80,438.93,71.32,436.39,63,427,32.38,401.43,13.63Z" fill="none" stroke="#f572ef" stroke-miterlimit="10" stroke-width="2" /><g id="ojo-b"><g id="pupila-b"><g clip-path="url(#clip-path)"><g id="pupila-b-2" data-name="pupila-b"><path id="fondo-pupila-b" d="M250.42,118.12c0-20.65,15.56-37.39,34.75-37.39s34.75,16.74,34.75,37.39-15.56,37.39-34.75,37.39-34.75-16.74-34.75-37.39" fill="#f572ef" /><path id="brillo-2-b" d="M307.4,88s-.63,19.65-19.79,19.65c0,0,19.94.77,19.94,19.8,0,0-.39-19.84,20-19.84,0,0-20.13.19-20.13-19.61" fill="#fff" /><path id="brillo-1-b" d="M260.71,107.39S260.09,127,240.93,127c0,0,19.94.77,19.94,19.79,0,0-.39-19.83,20-19.83,0,0-20.14.19-20.14-19.61" fill="#fff" /></g></g></g><path id="borde-pupila-b" d="M240.93,109.55c2.8-3.74,34.76-36.17,70.79-36.17,42.16,0,70.63,32.74,73.2,36.17-2.63,3.54-34.34,36.19-72,36.19S243.56,113.09,240.93,109.55Z" fill="none" stroke="#f572ef" stroke-miterlimit="10" stroke-width="2" /></g><g id="ojo-a"><g id="pupila-a"><g clip-path="url(#clip-path-2)"><g id="pupila-a-2" data-name="pupila-a"><path id="fondo-pupila-a" d="M48.53,118.12c0-20.65,15.56-37.39,34.75-37.39S118,97.47,118,118.12s-15.56,37.39-34.75,37.39-34.75-16.74-34.75-37.39" fill="#f572ef" /><path id="brillo-2-a" d="M105.51,88s-.63,19.65-19.79,19.65c0,0,19.94.77,19.94,19.8,0,0-.39-19.84,20-19.84,0,0-20.13.19-20.13-19.61" fill="#fff" /><path id="brillo-1-a" d="M58.83,107.39S58.2,127,39,127c0,0,19.94.77,19.94,19.79,0,0-.39-19.83,20-19.83,0,0-20.13.19-20.13-19.61" fill="#fff" /></g></g></g><path id="borde-pupila-a" d="M39,109.55c2.8-3.74,34.76-36.17,70.79-36.17,42.17,0,70.64,32.74,73.2,36.17-2.63,3.54-34.34,36.19-72,36.19S41.67,113.09,39,109.55Z" fill="none" stroke="#f572ef" stroke-miterlimit="10" stroke-width="2" /></g></g></g></g></svg>
-                {/* <Blob id="blob_svg" /> */}
               </div>
-              <h1>¡Hola! Soy Raul Meza Montoya, diseñador gráfico y web.</h1>
             </div>
-            {data.allFile.nodes.map((node) => {
-              return (
-                <Link key={"project-" + node.name} to={"projects/" + node.name.replace(/^\d_/g, "")}>
-                  <GatsbyImage
-                    image={node.childImageSharp.gatsbyImageData}
-                    alt={node.name}
-                    key={node.id}
-                  />
-                </Link>
-              );
-            })}
+            <div className="project-thumbnails">
+              {data.allFile.nodes.map((node) => {
+                return (
+                  <Link key={"project-" + node.name} to={"projects/" + node.name.replace(/^\d_/g, "")}>
+                    <GatsbyImage
+                      image={node.childImageSharp.gatsbyImageData}
+                      alt={node.name}
+                      key={node.id}
+                    />
+                  </Link>
+                );
+              })}
+            </div>
           </Section>
 
           {/* Section: About me */}
@@ -310,10 +311,10 @@ const IndexPage = ({ data }) => {
           <Section containerRef={contactRef} className="index-section" sectionTitle="Contacto" id="contacto">
             <div className="section-content">
               <p className="greeting-contact">¡Estaré contento de hablar contigo!</p>
-              <a className="contact-link" href="mailto:raulmezamontoya@gmail.com">
+              <motion.a whileTap={{ scale: .94, rotate: 1 }} className="contact-link" href="mailto:raulmezamontoya@gmail.com">
                 Email: raulmezamontoya@gmail.com
-              </a>
-              <a className="contact-link" href="tel:2212064081">Tel: 2212064081</a>
+              </motion.a>
+              <motion.a whileTap={{ scale: .94, rotate: 1 }} className="contact-link" href="tel:2212064081">Tel: 2212064081</motion.a>
             </div>
           </Section>
         </div>

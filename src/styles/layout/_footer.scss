@@ -15,6 +15,11 @@ footer.footer {
       display: inline-block;
       padding: 24px;
       margin: 0;
+      transition: color .18s ease;
+      &:hover {
+        color: $color-primary;
+        transition: color .18s ease;
+      }
     }
   }
 }

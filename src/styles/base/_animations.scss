@@ -5,6 +5,58 @@
 */
 
 /**
+  * Header - Blob eyes
+*/
+
+@keyframes openandclose {
+  0% {
+    transform: scaleY(1);
+  }
+  50% {
+    transform: scaleY(1);
+  }
+  54% {
+    transform: scaleY(.04);
+  }
+  55% {
+    transform: scaleY(.04);
+  }
+  56% {
+    transform: scaleY(1);
+  }
+  100% {
+    transform: scaleY(1);
+  }
+}
+
+@keyframes ojos {
+  0% {
+    transform: translate(0, 0);
+  }
+  5% {
+    transform: translate(0, 0);
+  }
+  15% {
+    transform: translate(32px, -32px);
+  }
+  25% {
+    transform: translate(32px, -32px);
+  }
+  50% {
+    transform: translate(48px, 16px);
+  }
+  75% {
+    transform: translate(48px, 16px);
+  }
+  90% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+/**
   * Contact - Links
 */
 
