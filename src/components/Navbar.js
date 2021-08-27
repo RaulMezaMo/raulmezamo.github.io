@@ -183,7 +183,7 @@ const Navbar = (activeMenu) => {
       >
         <svg id="menu_triangle" xmlns="http://www.w3.org/2000/svg" width="16" height="8" viewBox="0 0 16 8">
           <g id="menu_triangle_group" data-name="menu_triangle_group">
-            <polyline points="0 8 8 0 16 8" fill="#fff" stroke="#000" stroke-miterlimit="10" />
+            <polyline points="0 8 8 0 16 8" fill="#fff" stroke="#000" strokeMiterlimit="10" />
           </g>
         </svg>
         <li className="nav-item">
