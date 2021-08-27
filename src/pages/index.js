@@ -346,7 +346,7 @@ export const query = graphql`
         title
       }
     }
-    file(name: {eq: "cv_rmm"}) {
+    file(name: {eq: "cv_raul-meza-montoya"}) {
       id
       publicURL
     }
