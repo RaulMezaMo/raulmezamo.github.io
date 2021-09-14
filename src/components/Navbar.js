@@ -148,7 +148,7 @@ const Navbar = (activeMenu) => {
    * Navbar return
    */
   return (
-    <motion.nav className={`navbar ${deviceSize === "small" ? "small-navbar" : "big-navbar"}`} >
+    <motion.nav className={`navbar project-navbar ${deviceSize === "small" ? "small-navbar" : "big-navbar"}`} >
       <div className="navbar-logo">
         <Link className="logo-link" to="/">
           <Cara className="logo" />
