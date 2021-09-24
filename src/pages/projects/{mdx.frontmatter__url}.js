@@ -4,11 +4,16 @@ import { graphql } from 'gatsby'
 import Navbar from "../../components/Navbar"
 import Button from "../../components/Button"
 import { MDXRenderer } from 'gatsby-plugin-mdx'
+import smoothscroll from 'smoothscroll-polyfill';
+import smoothscrollPolyfill from 'smoothscroll-polyfill';
+import smoothscrollAnchorPolyfill from 'smoothscroll-anchor-polyfill';
 import ArrowReturn from "../../components/SvgComponents/icon_arrow-return_svg.js"
 import ArrowUp from "../../components/SvgComponents/icon_arrow-up_svg.js"
-import { motion } from "framer-motion"
+// import { motion } from "framer-motion"
 
 const ProjectPage = ({ data }) => {
+
+  smoothscrollPolyfill.polyfill();
 
   //Scrolls
   const [scrollPosition, setScrollPosition] = useState(0);
@@ -24,6 +29,10 @@ const ProjectPage = ({ data }) => {
     };
   }, []);
 
+  function scrollToTop() {
+    window.scroll({ top: 0, left: 0, behavior: 'smooth' })
+  }
+
   return (
     <div className="projects">
       <Layout>
@@ -31,17 +40,17 @@ const ProjectPage = ({ data }) => {
         <div className="content container-md">
           <article className="project">
             {/* Header */}
-            <motion.div layout className={`project-heading-section ${scrollPosition >= 8 ? "away-from-top" : ""}`}
+            <div className={`project-heading-section ${scrollPosition >= 8 ? "away-from-top" : ""}`}
             >
-              <motion.div layout className="button-container">
-                <Button type="secondary" href="/" layout classes="text-with-icon return-btn">
+              <div className="button-container">
+                <Button type="secondary" href="/" classes="text-with-icon return-btn" onClick={scrollToTop}>
                   <p>Return</p>
                   <ArrowReturn />
                 </Button>
-                <Button type="secondary" href="#" layout classes="icon up-btn">
+                <Button type="secondary" href="#" classes="icon up-btn">
                   <ArrowUp />
                 </Button>
-              </motion.div>
+              </div>
               <div className="heading-title">
                 <h2 className="projectHeading">{data.mdx.frontmatter.title}</h2>
                 <svg id="heading-bg" width="544" height="120" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -54,7 +63,7 @@ const ProjectPage = ({ data }) => {
                   </g>
                 </svg>
               </div>
-            </motion.div>
+            </div>
             {/* Content */}
             <div className="main-text">
             <MDXRenderer>{data.mdx.body}</MDXRenderer>
@@ -62,7 +71,7 @@ const ProjectPage = ({ data }) => {
           </article>
         </div>
       </Layout>
-    </div >
+    </div>
   )
 }
 

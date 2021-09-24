@@ -10,13 +10,21 @@
 
 /**
   *
+  *
   * Buttons
+  *
   *
   */
 
+// Variables
 $shadow-width: 5px;
 
-// General button style
+/**
+  *
+  * BUTTON
+  *
+  */
+
 .btn {
   padding: 0;
   border-radius: 0;
@@ -39,40 +47,46 @@ $shadow-width: 5px;
     width: 100%;
     background-color: white;
     text-align: center;
-    transform: translate(0, 0);
+    transform: translate3d(0, 0, 0);
 
     transition: transform ease 0.18s, box-shadow ease 0.18s;
 
-    p,
     svg {
-      transition: color ease 0.18s, stroke ease 0.18s, fill ease 0.18s;
+      transition: stroke 160ms, fill 160ms;
     }
 
     // Text
     p {
       margin: 0;
+      transition: color 160ms;
     }
   }
 
-  // For box shadow
+  /* Box shadow effect */
   .edge-right {
-    background: linear-gradient(color.adjust($color-yellow, $alpha: -0.2) 60%, color.adjust($color-yellow, $alpha: -0.6));
+    background: linear-gradient(
+      color.adjust($color-yellow, $alpha: -0.2) 60%,
+      color.adjust($color-yellow, $alpha: -0.6)
+    );
     width: $shadow-width;
     position: absolute;
     bottom: 0;
     right: 0;
     height: 100%;
   }
-
   .edge-bottom {
-    background: linear-gradient(to right, color.adjust($color-mint, $alpha: -.2) 20%, color.adjust($color-secondary, $alpha: -0.4) 55%, color.adjust($color-yellow, $alpha: -0.6) 80%);
+    background: linear-gradient(
+      to right,
+      color.adjust($color-mint, $alpha: -0.2) 20%,
+      color.adjust($color-secondary, $alpha: -0.4) 55%,
+      color.adjust($color-yellow, $alpha: -0.6) 80%
+    );
     height: $shadow-width;
     position: absolute;
     bottom: 0;
     right: 0;
     width: 100%;
   }
-
   .arrow-bottom-left {
     content: "";
     position: absolute;
@@ -83,11 +97,10 @@ $shadow-width: 5px;
     border-left: $shadow-width solid transparent;
     border-right: $shadow-width solid transparent;
     border-top: $shadow-width solid $color-mint;
-    transform: translateX(-$shadow-width) scale(0);
-    transition: transform ease 0.18s;
+    transform: translateX(-$shadow-width) scale(0.01);
     transform-origin: center bottom 0px;
+    transition: transform ease 0.18s;
   }
-
   .arrow-top-right {
     content: "";
     position: absolute;
@@ -98,29 +111,30 @@ $shadow-width: 5px;
     border-left: $shadow-width solid transparent;
     border-right: $shadow-width solid transparent;
     border-bottom: $shadow-width solid $color-yellow;
-    transform: translateY(-$shadow-width) scale(0);
+    transform: translateY(-$shadow-width) scale(0.01);
     transition: transform ease 0.18s;
     transform-origin: bottom right 0px;
   }
 
   /**
-    * Hover
+    * State: Hover
     */
   &:not([disabled]):hover {
-
     // Element border
-    .content {
-      box-shadow: inset 0 0 0 2px $color-primary;
-    }
+    // .content {
+    //   box-shadow: inset 0 0 0 2px $color-primary;
+    // }
 
     // Content colors
-    p {
-      color: $color-primary;
-    }
-    svg {
-      stroke: $color-primary;
-      fill: $color-primary;
-    }
+    // p {
+    //   color: $color-primary;
+    //   transition: color 160ms;
+    // }
+    // svg {
+    //   stroke: $color-primary;
+    //   fill: $color-primary;
+    //   transition: stroke 160ms, fill 160ms;
+    // }
 
     // Arrows Animation
     .arrow-bottom-left {
@@ -135,7 +149,7 @@ $shadow-width: 5px;
   }
 
   /**
-    * Active
+    * State: Active
     */
   &:not([disabled]):active {
     // Arrows Animation
@@ -153,7 +167,9 @@ $shadow-width: 5px;
 
 /**
   *
-  * Button-Secondary
+  *
+  * BUTTON-SECONDARY
+  *
   *
 */
 .btn.btn-secondary {
@@ -169,14 +185,16 @@ $shadow-width: 5px;
   }
 
   /**
-    * Focus
-  */
+    * State: Focus
+    */
   @include focus-primary;
+
+  /**
+    * Text w/ Icon
+    */
+  &.text-with-icon {
+    text-align: center;
+  }
+
 }
 
-/**
-  * Text w/ Icon
-*/
-.btn.btn-secondary.text-with-icon {
-  text-align: center;
-}

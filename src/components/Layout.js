@@ -1,13 +1,10 @@
-// import React, { useState, useEffect } from 'react'
-import * as React from 'react'
-// import Navbar from './Navbar'
-import Footer from './Footer'
-// import { useInView } from "react-intersection-observer";
+import * as React from 'react';
+import Footer from './Footer';
 import { graphql, useStaticQuery } from "gatsby";
 import { Helmet } from "react-helmet";
-import '../styles/main.scss'
-import '../../vendors/font-awesome/css/fontawesome.min.css'
-import '../../vendors/font-awesome/css/brands.min.css'
+import '../styles/main.scss';
+import '../../vendors/font-awesome/css/fontawesome.min.css';
+import '../../vendors/font-awesome/css/brands.min.css';
 
 const Layout = (props) => {
   const data = useStaticQuery(graphql`
@@ -37,6 +34,7 @@ const Layout = (props) => {
         <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
         <title>{data.site.siteMetadata.title}</title>
         <script src="https://cdn.jsdelivr.net/npm/lightgallery@2.2.0/lightgallery.umd.min.js"></script>
+        <script src="https://unpkg.com/smoothscroll-anchor-polyfill"></script>
       </Helmet>
     </main>
 

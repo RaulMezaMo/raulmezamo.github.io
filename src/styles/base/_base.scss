@@ -3,12 +3,29 @@
 */
 
 html {
-  background: url("../images/bg/bg_pink.png")
-  top center
-  repeat;
+  background: url("../images/bg/bg_pink.png") top center repeat;
   background-color: white;
   overflow-x: hidden;
+  // Disable smooth scrolling in mobile
+    --scroll-behavior: auto;
+    scroll-behavior: auto;
 }
+
 body {
   background: none;
+}
+
+// For smooth scroll in mobile
+  @media screen and (min-width: 1150px) {
+    html {
+      --scroll-behavior: smooth;
+      scroll-behavior: smooth;
+    }
+  }
+  // Disable smooth scrolling on reduced motion preference
+  @media (prefers-reduced-motion: reduce) {
+  html {
+    --scroll-behavior: auto;
+    scroll-behavior: auto;
+  }
 }

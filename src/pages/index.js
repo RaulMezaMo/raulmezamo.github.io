@@ -8,9 +8,6 @@ import { motion, useMotionValue, useAnimation } from "framer-motion"
 import Layout from "../components/Layout";
 import Section from "../components/Section";
 import Button from "../components/Button";
-// import FrontEnd from "../images/svgs/front-end_sm.svg";
-// import UXUIDesign from "../images/svgs/ux-ui-design_sm.svg";
-// import GraphicDesign from "../images/svgs/graphic-design_sm.svg";
 import UXUIDesign from "../components/SvgComponents/ux-ui-design_sm.js";
 import GraphicDesign from "../components/SvgComponents/graphic-design_sm.js";
 import FrontEnd from "../components/SvgComponents/front-end_sm.js";
@@ -112,9 +109,9 @@ const IndexPage = ({ data }) => {
    */
   const [activeMenu, setActiveMenu] = useState("projects");
   // Intersection Observer with useInView
-  const [aboutMeRef, aboutMeInView] = useInView({ threshold: .5 });
-  const [projectsRef, projectsInView] = useInView({ threshold: .5 });
-  const [contactRef, contactInView] = useInView({ threshold: .5 });
+  const [aboutMeRef, aboutMeInView] = useInView({ threshold: .2 });
+  const [projectsRef, projectsInView] = useInView({ threshold: .2 });
+  const [contactRef, contactInView] = useInView({ threshold: .2 });
 
   // Choose which navbar item is in view
   useEffect(() => {
@@ -136,7 +133,7 @@ const IndexPage = ({ data }) => {
       <Layout>
         {/* Inline Nav */}
         {/* The nav here allows the state of the scrolling to tell it in which section it is */}
-        <motion.nav className={`navbar ${deviceSize === "small" ? "small-navbar" : "big-navbar"} ${scrollPosition >= 8 ? "away-from-top" : ""}`} >
+        <nav className={`navbar ${deviceSize === "small" ? "small-navbar" : "big-navbar"} ${scrollPosition >= 8 ? "away-from-top" : ""}`} >
           <div className="navbar-logo">
             <Link className="logo-link" to="/">
               <Cara className="logo" />
@@ -192,7 +189,7 @@ const IndexPage = ({ data }) => {
               </span></Link>
             </li>
           </motion.ul>
-        </motion.nav>
+        </nav>
         {/* /Inline nav */}
         <div className="content container-md">
           {/* Section: Projects */}
