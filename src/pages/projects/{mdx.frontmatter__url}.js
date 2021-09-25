@@ -4,24 +4,22 @@ import { graphql } from 'gatsby'
 import Navbar from "../../components/Navbar"
 import Button from "../../components/Button"
 import { MDXRenderer } from 'gatsby-plugin-mdx'
-import smoothscroll from 'smoothscroll-polyfill';
 import smoothscrollPolyfill from 'smoothscroll-polyfill';
-import smoothscrollAnchorPolyfill from 'smoothscroll-anchor-polyfill';
 import ArrowReturn from "../../components/SvgComponents/icon_arrow-return_svg.js"
 import ArrowUp from "../../components/SvgComponents/icon_arrow-up_svg.js"
-// import { motion } from "framer-motion"
 
 const ProjectPage = ({ data }) => {
+  // // Check if window is defined (so if in the browser or in node.js).
+  // const isBrowser = typeof window !== "undefined"
 
-  smoothscrollPolyfill.polyfill();
+  // if (isBrowser) {
+  // }
 
-  //Scrolls
-  const [scrollPosition, setScrollPosition] = useState(0);
-  const handleScroll = () => {
-    const position = window.pageYOffset;
-    setScrollPosition(position);
-  };
+  // Runs on load
   useEffect(() => {
+    // For smooth scrolling
+    smoothscrollPolyfill.polyfill();
+    // For scrolling events
     window.addEventListener('scroll', handleScroll, { passive: true });
 
     return () => {
@@ -29,8 +27,17 @@ const ProjectPage = ({ data }) => {
     };
   }, []);
 
-  function scrollToTop() {
-    window.scroll({ top: 0, left: 0, behavior: 'smooth' })
+  //Scrolls
+  const [scrollPosition, setScrollPosition] = useState(0);
+  const handleScroll = () => {
+    const position = window.pageYOffset;
+    setScrollPosition(position);
+  };
+
+  const scrollToTop = () => {
+    if (isBrowser) {
+      window.scroll({ top: 0, left: 0, behavior: 'smooth' })
+    }
   }
 
   return (
